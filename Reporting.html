@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>WMS Reporting i analitika | Kontrola skladišnih procesa</title>
+
+    <meta name="description"
+          content="Napredni WMS reporting i analitika za potpunu kontrolu skladišnih operacija, zaliha, produktivnosti, komisioniranja i performansi skladišta.">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #1f2937;
+            background: #ffffff;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* HERO */
+
+        .hero {
+            background: linear-gradient(135deg, #0f2747, #173f70);
+            color: white;
+            padding: 90px 0;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            line-height: 1.15;
+            margin: 0 0 25px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #dbeafe;
+            margin-bottom: 30px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 15px;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.12);
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        /* SECTIONS */
+
+        section {
+            padding: 75px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+        }
+
+        .section-title h2 {
+            font-size: 34px;
+            margin-bottom: 15px;
+            color: #102a43;
+        }
+
+        .section-title p {
+            color: #64748b;
+            font-size: 18px;
+        }
+
+        /* INTRO */
+
+        .intro {
+            background: #f8fafc;
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .intro h2 {
+            font-size: 34px;
+            color: #102a43;
+        }
+
+        .intro p {
+            color: #475569;
+        }
+
+        .highlight-box {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 35px rgba(15, 39, 71, 0.08);
+        }
+
+        .highlight-box strong {
+            color: #0f5ca8;
+        }
+
+        /* CARDS */
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            padding: 30px;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            background: white;
+            transition: 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(15, 39, 71, 0.08);
+        }
+
+        .card-icon {
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: #102a43;
+            font-size: 21px;
+        }
+
+        .card p {
+            color: #64748b;
+            font-size: 15px;
+        }
+
+        /* REPORTING */
+
+        .reporting {
+            background: #f8fafc;
+        }
+
+        .report-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .report-item {
+            background: white;
+            padding: 28px;
+            border-radius: 12px;
+            border-left: 4px solid #1769aa;
+        }
+
+        .report-item h3 {
+            margin-top: 0;
+            color: #102a43;
+        }
+
+        .report-item ul {
+            padding-left: 20px;
+            margin-bottom: 0;
+        }
+
+        .report-item li {
+            margin-bottom: 7px;
+            color: #475569;
+        }
+
+        /* KPI */
+
+        .kpi {
+            background: #102a43;
+            color: white;
+        }
+
+        .kpi .section-title h2 {
+            color: white;
+        }
+
+        .kpi .section-title p {
+            color: #cbd5e1;
+        }
+
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .kpi-box {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 12px;
+            padding: 25px;
+        }
+
+        .kpi-box h3 {
+            margin-top: 0;
+            color: white;
+        }
+
+        .kpi-box p {
+            color: #cbd5e1;
+            font-size: 14px;
+        }
+
+        /* BENEFITS */
+
+        .benefit-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .benefit {
+            padding: 25px;
+            background: #f8fafc;
+            border-radius: 10px;
+        }
+
+        .benefit strong {
+            display: block;
+            margin-bottom: 7px;
+            color: #102a43;
+        }
+
+        .benefit span {
+            color: #64748b;
+        }
+
+        /* CTA */
+
+        .cta {
+            background: linear-gradient(135deg, #1769aa, #0f4778);
+            color: white;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: #dbeafe;
+            font-size: 18px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            background: white;
+            color: #0f4778;
+            border-radius: 7px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 900px) {
+
+            .cards,
+            .kpi-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .intro-grid,
+            .report-grid,
+            .benefit-list {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .cards,
+            .kpi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 55px 0;
+            }
+
+            .hero {
+                padding: 65px 0;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- HERO -->
+
+<section class="hero">
+    <div class="container">
+
+        <div class="hero-content">
+
+            <div class="badge">WMS Reporting & Analytics</div>
+
+            <h1>
+                Pretvorite podatke skladišta u konkretne odluke
+            </h1>
+
+            <p>
+                Napredni reporting omogućava potpun pregled rada skladišta,
+                zaliha, robnih tokova, produktivnosti zaposlenih i ključnih
+                performansi logističkih procesa.
+            </p>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- INTRO -->
+
+<section class="intro">
+
+    <div class="container">
+
+        <div class="intro-grid">
+
+            <div>
+
+                <h2>
+                    Potpuna kontrola skladišta kroz podatke
+                </h2>
+
+                <p>
+                    Dobar WMS ne treba samo da upravlja skladišnim operacijama,
+                    već i da pokaže koliko efikasno te operacije funkcionišu.
+                </p>
+
+                <p>
+                    Mantis Logistic Vision Suite omogućava detaljan uvid u
+                    skladišne aktivnosti i ključne pokazatelje performansi,
+                    od prijema robe i skladištenja do komisioniranja,
+                    pakovanja i otpreme.
+                </p>
+
+                <p>
+                    Podaci se mogu analizirati prema različitim kriterijumima,
+                    periodima, artiklima, korisnicima, nalozima, lokacijama
+                    i drugim parametrima relevantnim za poslovanje.
+                </p>
+
+            </div>
+
+            <div class="highlight-box">
+
+                <h3>Od operativnih podataka do KPI pokazatelja</h3>
+
+                <p>
+                    <strong>WMS evidentira svaku ključnu aktivnost u skladištu.</strong>
+                    Reporting omogućava da se ti podaci pretvore u informacije
+                    koje koriste operateri, rukovodioci skladišta, logistički
+                    menadžeri i uprava.
+                </p>
+
+                <p>
+                    Cilj nije samo videti šta se dogodilo, već razumeti
+                    <strong>zašto se dogodilo i gde postoji prostor za poboljšanje.</strong>
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- REPORTING CATEGORIES -->
+
+<section class="reporting">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>
+                Ključne oblasti WMS reportinga
+            </h2>
+
+            <p>
+                Reporting obuhvata sve najvažnije segmente skladišnog poslovanja.
+            </p>
+
+        </div>
+
+
+        <div class="report-grid">
+
+
+            <div class="report-item">
+
+                <h3>📦 Zalihe i stanje robe</h3>
+
+                <ul>
+                    <li>Trenutno stanje zaliha</li>
+                    <li>Zalihe po artiklu, lokaciji i skladištu</li>
+                    <li>Serije, lotovi i rokovi trajanja</li>
+                    <li>Ulazni i izlazni tokovi robe</li>
+                    <li>Istorija promena zaliha</li>
+                    <li>Inventurni podaci i odstupanja</li>
+                </ul>
+
+            </div>
+
+
+            <div class="report-item">
+
+                <h3>🚚 Prijem i otprema</h3>
+
+                <ul>
+                    <li>Pregled prijema robe</li>
+                    <li>Pregled otpreme</li>
+                    <li>Realizacija naloga</li>
+                    <li>Status skladišnih naloga</li>
+                    <li>Kašnjenja i nerešeni nalozi</li>
+                    <li>Promet robe kroz skladište</li>
+                </ul>
+
+            </div>
+
+
+            <div class="report-item">
+
+                <h3>🛒 Komisioniranje</h3>
+
+                <ul>
+                    <li>Broj realizovanih naloga</li>
+                    <li>Broj komisioniranih stavki</li>
+                    <li>Produktivnost komisionera</li>
+                    <li>Vreme izvršenja zadataka</li>
+                    <li>Greške i odstupanja</li>
+                    <li>Analiza rada po zonama</li>
+                </ul>
+
+            </div>
+
+
+            <div class="report-item">
+
+                <h3>👥 Produktivnost zaposlenih</h3>
+
+                <ul>
+                    <li>Učinak zaposlenih</li>
+                    <li>Broj izvršenih zadataka</li>
+                    <li>Vreme rada po aktivnosti</li>
+                    <li>Produktivnost po smeni</li>
+                    <li>Poređenje učinka</li>
+                    <li>Analiza opterećenja radne snage</li>
+                </ul>
+
+            </div>
+
+
+            <div class="report-item">
+
+                <h3>🏭 Performanse skladišta</h3>
+
+                <ul>
+                    <li>Iskorišćenost skladišnih kapaciteta</li>
+                    <li>Promet po lokacijama</li>
+                    <li>Analiza skladišnih zona</li>
+                    <li>Brzina protoka robe</li>
+                    <li>Opterećenje procesa</li>
+                    <li>Identifikacija uskih grla</li>
+                </ul>
+
+            </div>
+
+
+            <div class="report-item">
+
+                <h3>📊 Poslovna analitika</h3>
+
+                <ul>
+                    <li>Trendovi skladišnog poslovanja</li>
+                    <li>Analiza po kupcima</li>
+                    <li>Analiza po artiklima</li>
+                    <li>Promet i obim operacija</li>
+                    <li>Poređenje perioda</li>
+                    <li>Podrška strateškom odlučivanju</li>
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- KPI -->
+
+<section class="kpi">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>
+                Ključni KPI pokazatelji skladišta
+            </h2>
+
+            <p>
+                Pratite pokazatelje koji direktno utiču na efikasnost
+                i kvalitet skladišnih operacija.
+            </p>
+
+        </div>
+
+
+        <div class="kpi-grid">
+
+            <div class="kpi-box">
+                <h3>Inventory Accuracy</h3>
+                <p>
+                    Tačnost stanja zaliha i odstupanja između sistema
+                    i fizičkog stanja.
+                </p>
+            </div>
+
+            <div class="kpi-box">
+                <h3>Picking Productivity</h3>
+                <p>
+                    Produktivnost komisioniranja i učinak zaposlenih
+                    po vremenu ili aktivnosti.
+                </p>
+            </div>
+
+            <div class="kpi-box">
+                <h3>Order Fulfillment</h3>
+                <p>
+                    Brzina i uspešnost realizacije skladišnih naloga
+                    od prijema do otpreme.
+                </p>
+            </div>
+
+            <div class="kpi-box">
+                <h3>Warehouse Utilization</h3>
+                <p>
+                    Iskorišćenost skladišnog prostora, lokacija i
+                    raspoloživih kapaciteta.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- BENEFITS -->
+
+<section>
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>
+                Šta dobijate kvalitetnim WMS reportingom?
+            </h2>
+
+            <p>
+                Dobri izveštaji nisu samo pregled prošlih događaja –
+                oni omogućavaju kontinuirano unapređenje skladišta.
+            </p>
+
+        </div>
+
+
+        <div class="benefit-list">
+
+            <div class="benefit">
+
+                <strong>✔ Veća kontrola zaliha</strong>
+
+                <span>
+                    Menadžment u svakom trenutku ima pregled količina,
+                    lokacija i kretanja robe.
+                </span>
+
+            </div>
+
+
+            <div class="benefit">
+
+                <strong>✔ Veća produktivnost</strong>
+
+                <span>
+                    Identifikovanje neefikasnosti i poređenje učinka
+                    različitih procesa i radnih grupa.
+                </span>
+
+            </div>
+
+
+            <div class="benefit">
+
+                <strong>✔ Brže donošenje odluka</strong>
+
+                <span>
+                    Relevantni podaci dostupni su bez potrebe za
+                    ručnim prikupljanjem podataka iz više izvora.
+                </span>
+
+            </div>
+
+
+            <div class="benefit">
+
+                <strong>✔ Identifikovanje uskih grla</strong>
+
+                <span>
+                    Analiza procesa omogućava da se na vreme uoče
+                    problemi u prijemu, komisioniranju ili otpremi.
+                </span>
+
+            </div>
+
+
+            <div class="benefit">
+
+                <strong>✔ Kontinuirano unapređenje</strong>
+
+                <span>
+                    Istorijski podaci omogućavaju praćenje trendova
+                    i merenje efekata uvedenih poboljšanja.
+                </span>
+
+            </div>
+
+
+            <div class="benefit">
+
+                <strong>✔ Jedan izvor podataka</strong>
+
+                <span>
+                    Operativni podaci nastali tokom rada WMS-a mogu
+                    predstavljati osnovu za menadžersku i poslovnu analitiku.
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CTA -->
+
+<section class="cta">
+
+    <div class="container">
+
+        <h2>
+            Vaše skladište generiše podatke svakog dana.
+        </h2>
+
+        <p>
+            Iskoristite ih za bolju kontrolu zaliha, veću produktivnost
+            i efikasnije upravljanje skladišnim procesima.
+        </p>
+
+        <a href="kontakt.html" class="btn">
+            Zatražite više informacija
+        </a>
+
+    </div>
+
+</section>
+
+
+</body>
+</html>
