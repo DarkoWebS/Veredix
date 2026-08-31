@@ -4,83 +4,348 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>DarkoWebs - Softverska i hardverska rešenja</title>
+    <title>LOGISTIX | Digitalna rešenja za logistiku</title>
+
+    <meta name="description"
+          content="Softverska i hardverska rešenja za savremenu logistiku, skladištenje i distribuciju.">
 
     <style>
+
+        /* =====================================================
+           OSNOVNA PODEŠAVANJA
+        ===================================================== */
+
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: Arial, sans-serif;
-            color: #222;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #172033;
+            background: #ffffff;
             line-height: 1.6;
         }
 
-        nav {
-            background: #ffffff;
-            padding: 20px 8%;
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+
+        /* =====================================================
+           NAVIGACIJA
+        ===================================================== */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255,255,255,0.96);
+            border-bottom: 1px solid #e8ebf0;
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar {
+            height: 76px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            justify-content: space-between;
         }
 
         .logo {
             font-size: 25px;
-            font-weight: bold;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: #102a43;
         }
 
-        nav ul {
-            list-style: none;
+        .logo span {
+            color: #1976d2;
+        }
+
+        .nav-links {
             display: flex;
+            align-items: center;
             gap: 30px;
+            list-style: none;
         }
 
-        nav a {
-            text-decoration: none;
-            color: #222;
-            font-weight: 500;
+        .nav-links a {
+            font-size: 15px;
+            font-weight: 600;
+            color: #344054;
+            transition: 0.3s;
         }
+
+        .nav-links a:hover {
+            color: #1976d2;
+        }
+
+        .nav-contact {
+            padding: 11px 20px;
+            border-radius: 6px;
+            background: #1976d2;
+            color: white !important;
+        }
+
+        .nav-contact:hover {
+            background: #125ca8;
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
 
         .hero {
-            background: #f3f6fa;
-            padding: 110px 8%;
-            text-align: center;
+            min-height: 650px;
+            display: flex;
+            align-items: center;
+            background:
+                linear-gradient(110deg,
+                #f7faff 0%,
+                #edf5ff 55%,
+                #ffffff 100%);
+        }
+
+        .hero-content {
+            max-width: 780px;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            margin-bottom: 25px;
+            padding: 8px 15px;
+            border-radius: 30px;
+            background: #e4f0ff;
+            color: #1769aa;
+            font-size: 14px;
+            font-weight: 700;
         }
 
         .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
+            font-size: 58px;
+            line-height: 1.08;
+            margin-bottom: 25px;
+            color: #102a43;
+            letter-spacing: -1.5px;
+        }
+
+        .hero h1 span {
+            color: #1976d2;
         }
 
         .hero p {
+            max-width: 700px;
             font-size: 20px;
-            max-width: 750px;
-            margin: auto;
-            color: #555;
+            color: #52606d;
+            margin-bottom: 35px;
         }
 
-        .button {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 14px 28px;
-            background: #1769aa;
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
         }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 25px;
+            border-radius: 7px;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: #1976d2;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #125ca8;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            border: 1px solid #c9d3df;
+            background: white;
+            color: #344054;
+        }
+
+        .btn-secondary:hover {
+            border-color: #1976d2;
+            color: #1976d2;
+        }
+
+
+        /* =====================================================
+           STATISTIKA
+        ===================================================== */
+
+        .stats {
+            margin-top: -45px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .stats-box {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 15px 40px rgba(30,60,90,0.10);
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            overflow: hidden;
+        }
+
+        .stat {
+            padding: 30px;
+            text-align: center;
+            border-right: 1px solid #edf0f4;
+        }
+
+        .stat:last-child {
+            border-right: none;
+        }
+
+        .stat h3 {
+            font-size: 30px;
+            color: #1976d2;
+            margin-bottom: 5px;
+        }
+
+        .stat p {
+            font-size: 14px;
+            color: #667085;
+        }
+
+
+        /* =====================================================
+           SEKCIJE
+        ===================================================== */
 
         section {
-            padding: 80px 8%;
+            padding: 100px 0;
         }
 
-        section h2 {
+        .section-header {
             text-align: center;
-            font-size: 34px;
-            margin-bottom: 45px;
+            max-width: 750px;
+            margin: 0 auto 55px;
+        }
+
+        .section-label {
+            color: #1976d2;
+            font-size: 14px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 10px;
+        }
+
+        .section-header h2 {
+            font-size: 40px;
+            color: #102a43;
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            color: #667085;
+            font-size: 17px;
+        }
+
+
+        /* =====================================================
+           O NAMA
+        ===================================================== */
+
+        .about {
+            background: white;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 40px;
+            color: #102a43;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            color: #667085;
+            margin-bottom: 18px;
+            font-size: 17px;
+        }
+
+        .about-list {
+            list-style: none;
+            margin-top: 25px;
+        }
+
+        .about-list li {
+            margin-bottom: 12px;
+            font-weight: 600;
+            color: #344054;
+        }
+
+        .about-list li::before {
+            content: "✓";
+            display: inline-block;
+            margin-right: 10px;
+            color: #1976d2;
+            font-weight: bold;
+        }
+
+        .about-box {
+            min-height: 360px;
+            border-radius: 15px;
+            background:
+                linear-gradient(135deg, #102a43, #1976d2);
+            padding: 45px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-shadow: 0 20px 50px rgba(16,42,67,0.18);
+        }
+
+        .about-box .big-icon {
+            font-size: 65px;
+            margin-bottom: 20px;
+        }
+
+        .about-box h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .about-box p {
+            color: #dbeafe;
+        }
+
+
+        /* =====================================================
+           SOFTVER
+        ===================================================== */
+
+        .software {
+            background: #f7f9fc;
         }
 
         .cards {
@@ -90,118 +355,622 @@
         }
 
         .card {
-            padding: 30px;
-            border: 1px solid #ddd;
-            border-radius: 10px;
             background: white;
+            border: 1px solid #e7ebf0;
+            border-radius: 12px;
+            padding: 32px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 15px 35px rgba(30,60,90,0.10);
+            border-color: #cbdff5;
+        }
+
+        .card-icon {
+            width: 58px;
+            height: 58px;
+            border-radius: 10px;
+            background: #e8f2ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 22px;
         }
 
         .card h3 {
-            margin-bottom: 15px;
             font-size: 22px;
+            color: #102a43;
+            margin-bottom: 12px;
         }
 
-        #contact {
-            background: #f3f6fa;
+        .card p {
+            color: #667085;
+            font-size: 15px;
+        }
+
+        .card-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #1976d2;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           HARDVER
+        ===================================================== */
+
+        .hardware {
+            background: white;
+        }
+
+        .hardware-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .hardware-card {
+            padding: 30px 20px;
             text-align: center;
+            border: 1px solid #e7ebf0;
+            border-radius: 10px;
+            transition: 0.3s;
         }
 
-        footer {
-            background: #111;
+        .hardware-card:hover {
+            box-shadow: 0 12px 30px rgba(30,60,90,0.08);
+            transform: translateY(-5px);
+        }
+
+        .hardware-icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .hardware-card h3 {
+            font-size: 18px;
+            color: #102a43;
+            margin-bottom: 8px;
+        }
+
+        .hardware-card p {
+            font-size: 14px;
+            color: #667085;
+        }
+
+
+        /* =====================================================
+           PROCESI
+        ===================================================== */
+
+        .process {
+            background: #f7f9fc;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .process-item {
+            text-align: center;
+            position: relative;
+        }
+
+        .process-number {
+            width: 55px;
+            height: 55px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background: #1976d2;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .process-item h3 {
+            color: #102a43;
+            margin-bottom: 10px;
+        }
+
+        .process-item p {
+            color: #667085;
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           PARTNERI
+        ===================================================== */
+
+        .partners {
+            background: white;
+        }
+
+        .partner-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .partner {
+            height: 110px;
+            border: 1px solid #e7ebf0;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 800;
+            color: #667085;
+            transition: 0.3s;
+        }
+
+        .partner:hover {
+            color: #1976d2;
+            border-color: #b9d5f2;
+        }
+
+
+        /* =====================================================
+           REFERENCE
+        ===================================================== */
+
+        .references {
+            background: #f7f9fc;
+        }
+
+        .reference-box {
+            background: #102a43;
+            color: white;
+            border-radius: 15px;
+            padding: 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .reference-box h2 {
+            font-size: 38px;
+            margin-bottom: 20px;
+        }
+
+        .reference-box p {
+            color: #dbe5ef;
+            margin-bottom: 20px;
+        }
+
+        .reference-list {
+            list-style: none;
+        }
+
+        .reference-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.12);
+        }
+
+        .reference-list strong {
+            color: white;
+        }
+
+        .reference-list span {
+            color: #b7c6d6;
+        }
+
+
+        /* =====================================================
+           KONTAKT
+        ===================================================== */
+
+        .contact {
+            background: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .contact-info h2 {
+            font-size: 40px;
+            color: #102a43;
+            margin-bottom: 20px;
+        }
+
+        .contact-info > p {
+            color: #667085;
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            margin-bottom: 20px;
+        }
+
+        .contact-item strong {
+            display: block;
+            color: #102a43;
+            margin-bottom: 4px;
+        }
+
+        .contact-item span {
+            color: #667085;
+        }
+
+        .contact-form {
+            background: #f7f9fc;
+            padding: 35px;
+            border-radius: 12px;
+        }
+
+        .contact-form h3 {
+            font-size: 24px;
+            margin-bottom: 25px;
+            color: #102a43;
+        }
+
+        .form-group {
+            margin-bottom: 17px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 7px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #344054;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #d0d5dd;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 15px;
+            background: white;
+        }
+
+        .form-group textarea {
+            height: 130px;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #1976d2;
+        }
+
+        .form-button {
+            border: none;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+
+        /* =====================================================
+           CTA
+        ===================================================== */
+
+        .cta {
+            padding: 70px 0;
+            background: #1976d2;
             color: white;
             text-align: center;
-            padding: 30px;
         }
 
-        @media(max-width: 800px) {
+        .cta h2 {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            color: #dbeafe;
+            font-size: 17px;
+            margin-bottom: 25px;
+        }
+
+        .cta .btn {
+            background: white;
+            color: #1976d2;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+            background: #0b1f33;
+            color: white;
+            padding: 55px 0 25px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-size: 25px;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .footer-logo span {
+            color: #4da3ff;
+        }
+
+        .footer-about {
+            color: #9fb1c3;
+            max-width: 400px;
+        }
+
+        .footer-column h4 {
+            margin-bottom: 18px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            color: #9fb1c3;
+            font-size: 14px;
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            padding-top: 25px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #8193a5;
+            font-size: 13px;
+            text-align: center;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE - TABLET
+        ===================================================== */
+
+        @media (max-width: 1000px) {
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hardware-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+
+            .partner-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+
+        /* =====================================================
+           RESPONSIVE - TELEFON
+        ===================================================== */
+
+        @media (max-width: 700px) {
+
+            .navbar {
+                height: auto;
+                padding: 18px 0;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px 18px;
+            }
+
+            .nav-contact {
+                display: none;
+            }
+
+            .hero {
+                min-height: 550px;
+                padding: 70px 0;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            .stats {
+                margin-top: 0;
+                padding-top: 30px;
+            }
+
+            .stats-box {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stat {
+                border-bottom: 1px solid #edf0f4;
+            }
+
+            section {
+                padding: 70px 0;
+            }
+
+            .section-header h2,
+            .about-text h2,
+            .contact-info h2 {
+                font-size: 32px;
+            }
+
+            .about-grid,
+            .contact-grid,
+            .reference-box {
+                grid-template-columns: 1fr;
+            }
+
             .cards {
                 grid-template-columns: 1fr;
             }
 
-            nav ul {
-                gap: 12px;
-                font-size: 14px;
+            .hardware-grid {
+                grid-template-columns: 1fr 1fr;
             }
 
-            .hero h1 {
-                font-size: 36px;
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .partner-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .reference-box {
+                padding: 35px;
+            }
+
+            .reference-box h2 {
+                font-size: 30px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
             }
         }
+
     </style>
 </head>
 
+
 <body>
 
-<nav>
-    <div class="logo">DARKOWEBS</div>
 
-    <ul>
-        <li><a href="#about">O nama</a></li>
-        <li><a href="#software">Softverska rešenja</a></li>
-        <li><a href="#hardware">Hardverska rešenja</a></li>
-        <li><a href="#partners">Partneri</a></li>
-        <li><a href="#contact">Kontakt</a></li>
-    </ul>
-</nav>
+<!-- =====================================================
+     NAVIGACIJA
+===================================================== -->
 
+<header>
+
+    <div class="container navbar">
+
+        <a href="#" class="logo">
+            LOGIST<span>IX</span>
+        </a>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="#about">O nama</a>
+            </li>
+
+            <li>
+                <a href="#software">Softverska rešenja</a>
+            </li>
+
+            <li>
+                <a href="#hardware">Hardverska rešenja</a>
+            </li>
+
+            <li>
+                <a href="#partners">Partneri</a>
+            </li>
+
+            <li>
+                <a href="#references">Reference</a>
+            </li>
+
+            <li>
+                <a href="#contact" class="nav-contact">
+                    Kontakt
+                </a>
+            </li>
+
+        </ul>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
 
 <section class="hero">
 
-    <h1>Digitalna rešenja za modernu logistiku</h1>
+    <div class="container">
 
-    <p>
-        Softverska i hardverska rešenja za upravljanje skladištima,
-        logistikom i poslovnim procesima.
-    </p>
+        <div class="hero-content">
 
-    <a href="#contact" class="button">
-        Kontaktirajte nas
-    </a>
+            <div class="hero-tag">
+                WMS • LOGISTIKA • AUTOMATIZACIJA
+            </div>
 
-</section>
+            <h1>
+                Digitalna rešenja za
+                <span>efikasniju logistiku.</span>
+            </h1>
 
-
-<section id="about">
-
-    <h2>O nama</h2>
-
-    <p style="max-width:800px;margin:auto;text-align:center;">
-        Bavimo se razvojem i implementacijom savremenih softverskih
-        i hardverskih rešenja namenjenih kompanijama koje žele da
-        unaprede svoje logističke i skladišne procese.
-    </p>
-
-</section>
-
-
-<section id="software">
-
-    <h2>Softverska rešenja</h2>
-
-    <div class="cards">
-
-        <div class="card">
-            <h3>WMS</h3>
             <p>
-                Sistemi za upravljanje skladištem, prijemom robe,
-                komisioniranjem, inventurom i otpremom.
+                Pomažemo kompanijama da digitalizuju, automatizuju
+                i unaprede svoje skladišne i logističke procese
+                kroz savremena softverska i hardverska rešenja.
             </p>
-        </div>
 
-        <div class="card">
-            <h3>Logistika</h3>
-            <p>
-                Rešenja za optimizaciju logističkih procesa,
-                transporta i distribucije.
-            </p>
-        </div>
+            <div class="hero-buttons">
 
-        <div class="card">
-            <h3>Integracije</h3>
-            <p>
-                Povezivanje WMS sistema sa ERP, finansijskim,
-                transportnim i drugim poslovnim sistemima.
-            </p>
+                <a href="#software" class="btn btn-primary">
+                    Naša rešenja →
+                </a>
+
+                <a href="#contact" class="btn btn-secondary">
+                    Kontaktirajte nas
+                </a>
+
+            </div>
+
         </div>
 
     </div>
@@ -209,31 +978,119 @@
 </section>
 
 
-<section id="hardware">
 
-    <h2>Hardverska rešenja</h2>
+<!-- =====================================================
+     STATISTIKA
+===================================================== -->
 
-    <div class="cards">
+<div class="stats">
 
-        <div class="card">
-            <h3>Mobilni terminali</h3>
-            <p>
-                Industrijski terminali i uređaji za rad u skladištu.
-            </p>
+    <div class="container">
+
+        <div class="stats-box">
+
+            <div class="stat">
+                <h3>10+</h3>
+                <p>Godina iskustva</p>
+            </div>
+
+            <div class="stat">
+                <h3>50+</h3>
+                <p>Projekata</p>
+            </div>
+
+            <div class="stat">
+                <h3>99%</h3>
+                <p>Operativne pouzdanosti</p>
+            </div>
+
+            <div class="stat">
+                <h3>24/7</h3>
+                <p>Podrška sistemima</p>
+            </div>
+
         </div>
 
-        <div class="card">
-            <h3>Barcode skeneri</h3>
-            <p>
-                Profesionalna rešenja za automatsku identifikaciju robe.
-            </p>
-        </div>
+    </div>
 
-        <div class="card">
-            <h3>Štampači etiketa</h3>
-            <p>
-                Rešenja za štampanje deklaracija, bar-kodova i logističkih etiketa.
-            </p>
+</div>
+
+
+
+<!-- =====================================================
+     O NAMA
+===================================================== -->
+
+<section id="about" class="about">
+
+    <div class="container">
+
+        <div class="about-grid">
+
+            <div class="about-text">
+
+                <div class="section-label">
+                    O NAMA
+                </div>
+
+                <h2>
+                    Tehnologija koja prati vaš biznis.
+                </h2>
+
+                <p>
+                    Naš cilj je da kompleksne logističke procese
+                    pretvorimo u jednostavne, efikasne i merljive
+                    operacije.
+                </p>
+
+                <p>
+                    Kombinujemo iskustvo iz logistike, skladišnog
+                    poslovanja i informacionih tehnologija kako
+                    bismo našim klijentima ponudili rešenja
+                    prilagođena njihovim stvarnim potrebama.
+                </p>
+
+                <ul class="about-list">
+
+                    <li>
+                        Konsalting i analiza poslovnih procesa
+                    </li>
+
+                    <li>
+                        Implementacija WMS sistema
+                    </li>
+
+                    <li>
+                        Integracija sa ERP sistemima
+                    </li>
+
+                    <li>
+                        Hardverska podrška skladišnim procesima
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="about-box">
+
+                <div class="big-icon">
+                    ⚙️
+                </div>
+
+                <h3>
+                    Od ideje do kompletnog rešenja
+                </h3>
+
+                <p>
+                    Analiziramo vaše procese, predlažemo optimalno
+                    rešenje, implementiramo sistem i pružamo
+                    kontinuiranu podršku.
+                </p>
+
+            </div>
+
         </div>
 
     </div>
@@ -241,25 +1098,174 @@
 </section>
 
 
-<section id="partners">
 
-    <h2>Partneri</h2>
+<!-- =====================================================
+     SOFTVERSKA REŠENJA
+===================================================== -->
 
-    <div class="cards">
+<section id="software" class="software">
 
-        <div class="card">
-            <h3>Partner 1</h3>
-            <p>Opis partnera.</p>
+    <div class="container">
+
+        <div class="section-header">
+
+            <div class="section-label">
+                SOFTVERSKA REŠENJA
+            </div>
+
+            <h2>
+                Digitalizujte svoje skladište
+            </h2>
+
+            <p>
+                Softver koji omogućava potpunu kontrolu nad
+                robom, zalihama i procesima u skladištu.
+            </p>
+
         </div>
 
-        <div class="card">
-            <h3>Partner 2</h3>
-            <p>Opis partnera.</p>
-        </div>
 
-        <div class="card">
-            <h3>Partner 3</h3>
-            <p>Opis partnera.</p>
+        <div class="cards">
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    📦
+                </div>
+
+                <h3>
+                    WMS
+                </h3>
+
+                <p>
+                    Kompletno upravljanje skladištem – prijem,
+                    skladištenje, komisioniranje, pakovanje,
+                    inventura i otprema.
+                </p>
+
+                <a href="#" class="card-link">
+                    Saznajte više →
+                </a>
+
+            </div>
+
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    🔄
+                </div>
+
+                <h3>
+                    Automatizacija
+                </h3>
+
+                <p>
+                    Automatizujte ponavljajuće procese i smanjite
+                    broj grešaka i vreme potrebno za obradu robe.
+                </p>
+
+                <a href="#" class="card-link">
+                    Saznajte više →
+                </a>
+
+            </div>
+
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    🔗
+                </div>
+
+                <h3>
+                    Integracije
+                </h3>
+
+                <p>
+                    Povezivanje WMS sistema sa ERP, finansijskim,
+                    transportnim i drugim poslovnim sistemima.
+                </p>
+
+                <a href="#" class="card-link">
+                    Saznajte više →
+                </a>
+
+            </div>
+
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    📊
+                </div>
+
+                <h3>
+                    Reporting & Analytics
+                </h3>
+
+                <p>
+                    Pregled ključnih pokazatelja i analiza
+                    performansi skladišta u realnom vremenu.
+                </p>
+
+                <a href="#" class="card-link">
+                    Saznajte više →
+                </a>
+
+            </div>
+
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    🚚
+                </div>
+
+                <h3>
+                    Transport & Distribucija
+                </h3>
+
+                <p>
+                    Rešenja za organizaciju transporta,
+                    distribucije i isporuke robe.
+                </p>
+
+                <a href="#" class="card-link">
+                    Saznajte više →
+                </a>
+
+            </div>
+
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    📱
+                </div>
+
+                <h3>
+                    Mobilna logistika
+                </h3>
+
+                <p>
+                    Mobilni radnici i terminali povezani sa
+                    centralnim sistemom u realnom vremenu.
+                </p>
+
+                <a href="#" class="card-link">
+                    Saznajte više →
+                </a>
+
+            </div>
+
+
         </div>
 
     </div>
@@ -267,21 +1273,732 @@
 </section>
 
 
-<section id="contact">
 
-    <h2>Kontakt</h2>
+<!-- =====================================================
+     HARDVERSKA REŠENJA
+===================================================== -->
 
-    <p>Email: info@tvojafirma.rs</p>
-    <p>Telefon: +381 XX XXX XXXX</p>
+<section id="hardware" class="hardware">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <div class="section-label">
+                HARDVERSKA REŠENJA
+            </div>
+
+            <h2>
+                Oprema za savremeno skladište
+            </h2>
+
+            <p>
+                Pouzdana industrijska oprema integrisana sa
+                vašim softverskim sistemom.
+            </p>
+
+        </div>
+
+
+        <div class="hardware-grid">
+
+
+            <div class="hardware-card">
+
+                <div class="hardware-icon">
+                    📱
+                </div>
+
+                <h3>
+                    Mobilni terminali
+                </h3>
+
+                <p>
+                    Industrijski uređaji za rad u skladištu.
+                </p>
+
+            </div>
+
+
+
+            <div class="hardware-card">
+
+                <div class="hardware-icon">
+                    🔎
+                </div>
+
+                <h3>
+                    Barcode skeneri
+                </h3>
+
+                <p>
+                    Profesionalna rešenja za automatsku identifikaciju.
+                </p>
+
+            </div>
+
+
+
+            <div class="hardware-card">
+
+                <div class="hardware-icon">
+                    🖨️
+                </div>
+
+                <h3>
+                    Printeri etiketa
+                </h3>
+
+                <p>
+                    Štampa logističkih etiketa i deklaracija.
+                </p>
+
+            </div>
+
+
+
+            <div class="hardware-card">
+
+                <div class="hardware-icon">
+                    📡
+                </div>
+
+                <h3>
+                    RFID
+                </h3>
+
+                <p>
+                    Napredna identifikacija i praćenje robe.
+                </p>
+
+            </div>
+
+
+
+            <div class="hardware-card">
+
+                <div class="hardware-icon">
+                    💻
+                </div>
+
+                <h3>
+                    Industrijski računari
+                </h3>
+
+                <p>
+                    Pouzdani računari za zahtevna radna okruženja.
+                </p>
+
+            </div>
+
+
+
+            <div class="hardware-card">
+
+                <div class="hardware-icon">
+                    🏷️
+                </div>
+
+                <h3>
+                    Etikete
+                </h3>
+
+                <p>
+                    Potrošni materijal za skladišne procese.
+                </p>
+
+            </div>
+
+
+
+            <div class="hardware-card">
+
+                <div class="hardware-icon">
+                    📶
+                </div>
+
+                <h3>
+                    Wi-Fi infrastruktura
+                </h3>
+
+                <p>
+                    Stabilna komunikacija u celom skladištu.
+                </p>
+
+            </div>
+
+
+
+            <div class="hardware-card">
+
+                <div class="hardware-icon">
+                    ⚙️
+                </div>
+
+                <h3>
+                    Ostala oprema
+                </h3>
+
+                <p>
+                    Kompletna podrška za vaše skladišne potrebe.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
 
 </section>
 
+
+
+<!-- =====================================================
+     PROCES
+===================================================== -->
+
+<section class="process">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <div class="section-label">
+                KAKO RADIMO
+            </div>
+
+            <h2>
+                Od analize do rezultata
+            </h2>
+
+            <p>
+                Strukturiran pristup svakom projektu omogućava
+                uspešnu implementaciju i dugoročnu podršku.
+            </p>
+
+        </div>
+
+
+        <div class="process-grid">
+
+
+            <div class="process-item">
+
+                <div class="process-number">
+                    01
+                </div>
+
+                <h3>
+                    Analiza
+                </h3>
+
+                <p>
+                    Upoznajemo vaše poslovne procese i identifikujemo
+                    mogućnosti za unapređenje.
+                </p>
+
+            </div>
+
+
+
+            <div class="process-item">
+
+                <div class="process-number">
+                    02
+                </div>
+
+                <h3>
+                    Projektovanje
+                </h3>
+
+                <p>
+                    Definišemo optimalno softversko i hardversko
+                    rešenje.
+                </p>
+
+            </div>
+
+
+
+            <div class="process-item">
+
+                <div class="process-number">
+                    03
+                </div>
+
+                <h3>
+                    Implementacija
+                </h3>
+
+                <p>
+                    Sistem uvodimo u rad uz obuku korisnika
+                    i testiranje procesa.
+                </p>
+
+            </div>
+
+
+
+            <div class="process-item">
+
+                <div class="process-number">
+                    04
+                </div>
+
+                <h3>
+                    Podrška
+                </h3>
+
+                <p>
+                    Nastavljamo da pratimo sistem i podržavamo
+                    njegov dalji razvoj.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PARTNERI
+===================================================== -->
+
+<section id="partners" class="partners">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <div class="section-label">
+                PARTNERI
+            </div>
+
+            <h2>
+                Tehnologija iz pouzdanih ruku
+            </h2>
+
+            <p>
+                Sarađujemo sa vodećim proizvođačima softvera
+                i hardvera za logistiku.
+            </p>
+
+        </div>
+
+
+        <div class="partner-grid">
+
+            <div class="partner">
+                PARTNER 01
+            </div>
+
+            <div class="partner">
+                PARTNER 02
+            </div>
+
+            <div class="partner">
+                PARTNER 03
+            </div>
+
+            <div class="partner">
+                PARTNER 04
+            </div>
+
+            <div class="partner">
+                PARTNER 05
+            </div>
+
+            <div class="partner">
+                PARTNER 06
+            </div>
+
+            <div class="partner">
+                PARTNER 07
+            </div>
+
+            <div class="partner">
+                PARTNER 08
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     REFERENCE
+===================================================== -->
+
+<section id="references" class="references">
+
+    <div class="container">
+
+        <div class="reference-box">
+
+
+            <div>
+
+                <div class="section-label">
+                    REFERENCE
+                </div>
+
+                <h2>
+                    Rešenja koja rade u realnom svetu.
+                </h2>
+
+                <p>
+                    Naša iskustva obuhvataju različite industrije,
+                    tipove skladišta i nivoe kompleksnosti logističkih
+                    procesa.
+                </p>
+
+                <a href="#contact" class="btn btn-primary">
+                    Postanite naš partner →
+                </a>
+
+            </div>
+
+
+
+            <div>
+
+                <ul class="reference-list">
+
+                    <li>
+                        <strong>FMCG</strong>
+                        <span> — distribucija i skladištenje</span>
+                    </li>
+
+                    <li>
+                        <strong>Retail</strong>
+                        <span> — omnichannel logistika</span>
+                    </li>
+
+                    <li>
+                        <strong>Proizvodnja</strong>
+                        <span> — sirovine i gotovi proizvodi</span>
+                    </li>
+
+                    <li>
+                        <strong>3PL</strong>
+                        <span> — logistika za više klijenata</span>
+                    </li>
+
+                    <li>
+                        <strong>Distribucija</strong>
+                        <span> — komisioniranje i otprema</span>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     KONTAKT
+===================================================== -->
+
+<section id="contact" class="contact">
+
+    <div class="container">
+
+        <div class="contact-grid">
+
+
+            <div class="contact-info">
+
+                <div class="section-label">
+                    KONTAKT
+                </div>
+
+                <h2>
+                    Hajde da razgovaramo o vašem projektu.
+                </h2>
+
+                <p>
+                    Bez obzira da li planirate uvođenje WMS-a,
+                    automatizaciju skladišta ili unapređenje
+                    postojećeg sistema, možemo zajedno pronaći
+                    optimalno rešenje.
+                </p>
+
+
+                <div class="contact-item">
+
+                    <strong>
+                        Email
+                    </strong>
+
+                    <span>
+                        info@logistix.rs
+                    </span>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <strong>
+                        Telefon
+                    </strong>
+
+                    <span>
+                        +381 11 123 4567
+                    </span>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <strong>
+                        Adresa
+                    </strong>
+
+                    <span>
+                        Beograd, Srbija
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="contact-form">
+
+                <h3>
+                    Pošaljite nam upit
+                </h3>
+
+                <form>
+
+                    <div class="form-group">
+
+                        <label>
+                            Ime i prezime
+                        </label>
+
+                        <input
+                            type="text"
+                            placeholder="Vaše ime i prezime"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Kompanija
+                        </label>
+
+                        <input
+                            type="text"
+                            placeholder="Naziv kompanije"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Email
+                        </label>
+
+                        <input
+                            type="email"
+                            placeholder="vas@email.com"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Poruka
+                        </label>
+
+                        <textarea
+                            placeholder="Opišite ukratko šta vam je potrebno..."
+                        ></textarea>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary form-button"
+                    >
+                        Pošalji upit →
+                    </button>
+
+                </form>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CTA
+===================================================== -->
+
+<section class="cta">
+
+    <div class="container">
+
+        <h2>
+            Spremni za sledeći korak?
+        </h2>
+
+        <p>
+            Razgovarajmo o tome kako možemo unaprediti
+            vaše skladišne i logističke procese.
+        </p>
+
+        <a href="#contact" class="btn">
+            Kontaktirajte nas
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
 <footer>
 
-    © 2026 DarkoWebs. Sva prava zadržana.
+    <div class="container">
+
+        <div class="footer-grid">
+
+
+            <div>
+
+                <div class="footer-logo">
+                    LOGIST<span>IX</span>
+                </div>
+
+                <p class="footer-about">
+                    Softverska i hardverska rešenja za savremenu
+                    logistiku, skladištenje i distribuciju.
+                </p>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    Navigacija
+                </h4>
+
+                <ul>
+
+                    <li>
+                        <a href="#about">
+                            O nama
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#software">
+                            Softverska rešenja
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#hardware">
+                            Hardverska rešenja
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#references">
+                            Reference
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    Kontakt
+                </h4>
+
+                <ul>
+
+                    <li>
+                        <a href="#contact">
+                            Kontakt forma
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            info@logistix.rs
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            +381 11 123 4567
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            © 2026 LOGISTIX. Sva prava zadržana.
+
+        </div>
+
+    </div>
 
 </footer>
+
 
 </body>
 </html>
