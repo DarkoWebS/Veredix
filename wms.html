@@ -556,7 +556,151 @@
             color: #8193a5;
             font-size: 13px;
         }
+/* =====================================================
+   INTEGRACIJE - SISTEMI
+===================================================== */
 
+.integrations-section {
+    background: #f7f9fc;
+}
+
+.integration-main {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 30px;
+    align-items: stretch;
+}
+
+
+/* CENTRALNI WMS */
+
+.integration-center {
+    background: #102a43;
+    color: white;
+    border-radius: 15px;
+    padding: 45px 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.integration-center-icon {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 25px;
+    border-radius: 50%;
+    background: #1976d2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.integration-center h3 {
+    font-size: 25px;
+    margin-bottom: 12px;
+}
+
+.integration-center p {
+    color: #c9d7e5;
+    font-size: 15px;
+}
+
+
+/* SISTEMI */
+
+.integration-systems {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.integration-system {
+    background: white;
+    border: 1px solid #e4e9ef;
+    border-radius: 12px;
+    padding: 25px;
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    transition: 0.3s;
+}
+
+.integration-system:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(30,60,90,0.08);
+}
+
+.integration-icon {
+    min-width: 52px;
+    height: 52px;
+    border-radius: 9px;
+    background: #e8f2ff;
+    color: #1976d2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.integration-system h3 {
+    color: #102a43;
+    font-size: 18px;
+    margin-bottom: 6px;
+}
+
+.integration-system p {
+    color: #667085;
+    font-size: 14px;
+}
+
+
+/* =====================================================
+   NAČINI INTEGRACIJE
+===================================================== */
+
+.integration-methods {
+    margin-top: 35px;
+    background: white;
+    border: 1px solid #e4e9ef;
+    border-radius: 12px;
+    padding: 35px;
+}
+
+.integration-methods > h3 {
+    text-align: center;
+    color: #102a43;
+    font-size: 23px;
+    margin-bottom: 25px;
+}
+
+.method-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.method {
+    padding: 20px;
+    border-radius: 8px;
+    background: #f7f9fc;
+    border: 1px solid #e9edf2;
+}
+
+.method strong {
+    display: block;
+    color: #1976d2;
+    font-size: 17px;
+    margin-bottom: 5px;
+}
+
+.method span {
+    color: #667085;
+    font-size: 13px;
+}
 
         /* =====================================================
            RESPONSIVE
@@ -1449,7 +1593,203 @@ Sistem pruža real-time pregled stanja zaliha i aktivnosti u skladištu, smanjuj
 
 </section>
 
+<!-- =====================================================
+     INTEGRACIJE
+===================================================== -->
 
+<section class="integrations-section">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <div class="section-label">
+                INTEGRACIJE
+            </div>
+
+            <h2>
+                Povezivanje sa vašim poslovnim sistemima
+            </h2>
+
+            <p>
+                Mantis Logistic Vision može se integrisati sa postojećim
+                poslovnim i logističkim sistemima, omogućavajući pouzdanu
+                razmenu podataka i automatizaciju procesa.
+            </p>
+
+        </div>
+
+
+        <div class="integration-main">
+
+
+            <!-- CENTRALNI WMS -->
+
+            <div class="integration-center">
+
+                <div class="integration-center-icon">
+                    WMS
+                </div>
+
+                <h3>
+                    Mantis Logistic Vision
+                </h3>
+
+                <p>
+                    Centralna platforma za upravljanje skladišnim procesima
+                    i razmenu podataka sa drugim sistemima.
+                </p>
+
+            </div>
+
+
+            <!-- SISTEMI -->
+
+            <div class="integration-systems">
+
+
+                <div class="integration-system">
+
+                    <div class="integration-icon">
+                        ERP
+                    </div>
+
+                    <div>
+                        <h3>
+                            ERP sistemi
+                        </h3>
+
+                        <p>
+                            Razmena podataka o artiklima, partnerima,
+                            nalozima, prijemu i otpremi.
+                        </p>
+                    </div>
+
+                </div>
+
+
+
+                <div class="integration-system">
+
+                    <div class="integration-icon">
+                        TMS
+                    </div>
+
+                    <div>
+                        <h3>
+                            TMS
+                        </h3>
+
+                        <p>
+                            Povezivanje skladišnih i transportnih procesa,
+                            najava isporuka i razmena statusa.
+                        </p>
+                    </div>
+
+                </div>
+
+
+
+                <div class="integration-system">
+
+                    <div class="integration-icon">
+                        🚚
+                    </div>
+
+                    <div>
+                        <h3>
+                            Kurirske službe i brza pošta
+                        </h3>
+
+                        <p>
+                            Automatizovana razmena podataka o pošiljkama,
+                            adresama, paketima i statusima isporuke.
+                        </p>
+                    </div>
+
+                </div>
+
+
+
+                <div class="integration-system">
+
+                    <div class="integration-icon">
+                        API
+                    </div>
+
+                    <div>
+                        <h3>
+                            Web servisi i API
+                        </h3>
+
+                        <p>
+                            Direktna komunikacija između sistema u realnom
+                            vremenu putem API i web servisa.
+                        </p>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        <!-- NAČINI INTEGRACIJE -->
+
+        <div class="integration-methods">
+
+            <h3>
+                Načini razmene podataka
+            </h3>
+
+            <div class="method-grid">
+
+
+                <div class="method">
+                    <strong>XML</strong>
+                    <span>Strukturisana razmena podataka</span>
+                </div>
+
+
+                <div class="method">
+                    <strong>API</strong>
+                    <span>Direktna komunikacija između sistema</span>
+                </div>
+
+
+                <div class="method">
+                    <strong>CSV</strong>
+                    <span>Import i export podataka</span>
+                </div>
+
+
+                <div class="method">
+                    <strong>Excel</strong>
+                    <span>Razmena podataka kroz Excel fajlove</span>
+                </div>
+
+
+                <div class="method">
+                    <strong>DB</strong>
+                    <span>Razmena putem baze podataka i tabela</span>
+                </div>
+
+
+                <div class="method">
+                    <strong>EDI</strong>
+                    <span>Elektronska razmena poslovnih dokumenata</span>
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
 
 <!-- =====================================================
      CTA
