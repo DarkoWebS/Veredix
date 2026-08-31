@@ -1,0 +1,1602 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>WMS | LOGISTIX</title>
+
+    <meta name="description"
+          content="WMS rešenja za efikasno upravljanje skladištem, zalihama i logističkim procesima.">
+
+    <style>
+
+        /* =====================================================
+           OSNOVNA PODEŠAVANJA
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #172033;
+            background: #ffffff;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+
+        /* =====================================================
+           NAVIGACIJA
+        ===================================================== */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255,255,255,0.96);
+            border-bottom: 1px solid #e8ebf0;
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar {
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo img {
+            height: 45px;
+            width: auto;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 15px;
+            font-weight: 600;
+            color: #344054;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #1976d2;
+        }
+
+        .nav-contact {
+            padding: 11px 20px;
+            border-radius: 6px;
+            background: #1976d2;
+            color: white !important;
+        }
+
+        .nav-contact:hover {
+            background: #125ca8;
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+            padding: 100px 0;
+            background:
+                linear-gradient(110deg,
+                #f7faff 0%,
+                #edf5ff 55%,
+                #ffffff 100%);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 8px 15px;
+            border-radius: 30px;
+            background: #e4f0ff;
+            color: #1769aa;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            line-height: 1.08;
+            color: #102a43;
+            margin-bottom: 25px;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 span {
+            color: #1976d2;
+        }
+
+        .hero p {
+            font-size: 19px;
+            color: #52606d;
+            margin-bottom: 30px;
+            max-width: 650px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 25px;
+            border-radius: 7px;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: #1976d2;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #125ca8;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            border: 1px solid #c9d3df;
+            background: white;
+            color: #344054;
+        }
+
+        .btn-secondary:hover {
+            border-color: #1976d2;
+            color: #1976d2;
+        }
+
+
+        /* =====================================================
+           HERO WMS ILUSTRACIJA
+        ===================================================== */
+
+        .wms-visual {
+            min-height: 380px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, #102a43, #1976d2);
+            padding: 35px;
+            color: white;
+            box-shadow: 0 25px 55px rgba(16,42,67,0.18);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .visual-title {
+            font-size: 25px;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        .warehouse-flow {
+            display: grid;
+            gap: 12px;
+        }
+
+        .flow-item {
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.15);
+            padding: 14px 18px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .flow-item strong {
+            font-size: 15px;
+        }
+
+        .flow-item span {
+            font-size: 20px;
+        }
+
+
+        /* =====================================================
+           UVOD
+        ===================================================== */
+
+        section {
+            padding: 90px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 780px;
+            margin: 0 auto 50px;
+        }
+
+        .section-label {
+            color: #1976d2;
+            font-size: 14px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 10px;
+        }
+
+        .section-header h2 {
+            font-size: 40px;
+            color: #102a43;
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            color: #667085;
+            font-size: 17px;
+        }
+
+        .intro {
+            background: white;
+        }
+
+        .intro-content {
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .intro-content p {
+            color: #667085;
+            font-size: 18px;
+            margin-bottom: 18px;
+        }
+
+
+        /* =====================================================
+           PREDNOSTI
+        ===================================================== */
+
+        .benefits {
+            background: #f7f9fc;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #e7ebf0;
+            border-radius: 12px;
+            padding: 30px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px rgba(30,60,90,0.10);
+        }
+
+        .card-icon {
+            width: 58px;
+            height: 58px;
+            border-radius: 10px;
+            background: #e8f2ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 21px;
+            color: #102a43;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #667085;
+            font-size: 15px;
+        }
+
+
+        /* =====================================================
+           MODULI
+        ===================================================== */
+
+        .modules {
+            background: white;
+        }
+
+        .module-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .module {
+            border: 1px solid #e7ebf0;
+            border-radius: 10px;
+            padding: 25px;
+            display: flex;
+            gap: 20px;
+            transition: 0.3s;
+        }
+
+        .module:hover {
+            border-color: #bdd8f5;
+            box-shadow: 0 10px 25px rgba(30,60,90,0.07);
+        }
+
+        .module-number {
+            min-width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #e8f2ff;
+            color: #1976d2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+        }
+
+        .module h3 {
+            color: #102a43;
+            margin-bottom: 7px;
+        }
+
+        .module p {
+            color: #667085;
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           PROCES
+        ===================================================== */
+
+        .process {
+            background: #f7f9fc;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .process-item {
+            text-align: center;
+        }
+
+        .process-number {
+            width: 55px;
+            height: 55px;
+            margin: 0 auto 18px;
+            border-radius: 50%;
+            background: #1976d2;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+        }
+
+        .process-item h3 {
+            color: #102a43;
+            margin-bottom: 8px;
+        }
+
+        .process-item p {
+            color: #667085;
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           INTEGRACIJE
+        ===================================================== */
+
+        .integrations {
+            background: white;
+        }
+
+        .integration-box {
+            border-radius: 15px;
+            background: #102a43;
+            padding: 55px;
+            color: white;
+            text-align: center;
+        }
+
+        .integration-box h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .integration-box p {
+            max-width: 750px;
+            margin: 0 auto 30px;
+            color: #c9d7e5;
+        }
+
+        .integration-tags {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .integration-tag {
+            padding: 10px 17px;
+            border-radius: 6px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.12);
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           CTA
+        ===================================================== */
+
+        .cta {
+            background: #1976d2;
+            color: white;
+            text-align: center;
+            padding: 75px 0;
+        }
+
+        .cta h2 {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            color: #dbeafe;
+            font-size: 17px;
+            margin-bottom: 25px;
+        }
+
+        .cta .btn {
+            background: white;
+            color: #1976d2;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+            background: #0b1f33;
+            color: white;
+            padding: 50px 0 25px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 35px;
+        }
+
+        .footer-logo img {
+            height: 42px;
+            width: auto;
+            margin-bottom: 15px;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-about {
+            color: #9fb1c3;
+            max-width: 400px;
+        }
+
+        .footer-column h4 {
+            margin-bottom: 15px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 9px;
+        }
+
+        .footer-column a {
+            color: #9fb1c3;
+            font-size: 14px;
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 22px;
+            text-align: center;
+            color: #8193a5;
+            font-size: 13px;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 1000px) {
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 35px;
+            }
+
+        }
+
+
+        @media (max-width: 700px) {
+
+            .navbar {
+                flex-direction: column;
+                padding: 18px 0;
+                gap: 15px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px 18px;
+            }
+
+            .nav-contact {
+                display: none;
+            }
+
+            .hero {
+                padding: 70px 0;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            section {
+                padding: 65px 0;
+            }
+
+            .section-header h2 {
+                font-size: 32px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .module-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .integration-box {
+                padding: 35px 25px;
+            }
+
+            .integration-box h2 {
+                font-size: 30px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVIGACIJA
+===================================================== -->
+
+<header>
+
+    <div class="container navbar">
+
+        <a href="index.html" class="logo">
+
+            <img
+                src="images/logo.png"
+                alt="LOGISTIX"
+            >
+
+        </a>
+
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="index.html">
+                    Početna
+                </a>
+            </li>
+
+            <li>
+                <a href="index.html#about">
+                    O nama
+                </a>
+            </li>
+
+            <li>
+                <a href="wms.html">
+                    WMS
+                </a>
+            </li>
+
+            <li>
+                <a href="index.html#hardware">
+                    Hardverska rešenja
+                </a>
+            </li>
+
+            <li>
+                <a href="index.html#partners">
+                    Partneri
+                </a>
+            </li>
+
+            <li>
+                <a href="index.html#contact" class="nav-contact">
+                    Kontakt
+                </a>
+            </li>
+
+        </ul>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+    <div class="container">
+
+        <div class="hero-grid">
+
+
+            <div>
+
+                <div class="hero-tag">
+                    WAREHOUSE MANAGEMENT SYSTEM
+                </div>
+
+                <h1>
+                    Potpuna kontrola nad
+                    <span>vašim skladištem.</span>
+                </h1>
+
+                <p>
+                    WMS omogućava digitalno upravljanje kompletnim
+                    tokom robe – od prijema i skladištenja do
+                    komisioniranja, pakovanja i otpreme.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a
+                        href="#modules"
+                        class="btn btn-primary"
+                    >
+                        Pogledajte mogućnosti →
+                    </a>
+
+                    <a
+                        href="index.html#contact"
+                        class="btn btn-secondary"
+                    >
+                        Zatražite konsultaciju
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="wms-visual">
+
+                <div class="visual-title">
+                    Tok robe kroz WMS
+                </div>
+
+                <div class="warehouse-flow">
+
+                    <div class="flow-item">
+                        <strong>01 &nbsp; Prijem robe</strong>
+                        <span>📥</span>
+                    </div>
+
+                    <div class="flow-item">
+                        <strong>02 &nbsp; Skladištenje</strong>
+                        <span>📦</span>
+                    </div>
+
+                    <div class="flow-item">
+                        <strong>03 &nbsp; Komisioniranje</strong>
+                        <span>📱</span>
+                    </div>
+
+                    <div class="flow-item">
+                        <strong>04 &nbsp; Pakovanje</strong>
+                        <span>🏷️</span>
+                    </div>
+
+                    <div class="flow-item">
+                        <strong>05 &nbsp; Otpremanje</strong>
+                        <span>🚚</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     UVOD
+===================================================== -->
+
+<section class="intro">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <div class="section-label">
+                ŠTA JE WMS
+            </div>
+
+            <h2>
+                Više od evidencije zaliha
+            </h2>
+
+            <p>
+                WMS je centralni sistem za upravljanje operacijama
+                unutar skladišta.
+            </p>
+
+        </div>
+
+
+        <div class="intro-content">
+
+            <p>
+                Sistem omogućava da u svakom trenutku znate
+                šta se nalazi u skladištu, gde se nalazi,
+                koliko ga ima i koji proces treba da bude
+                izvršen sledeći.
+            </p>
+
+            <p>
+                Umesto oslanjanja na papir, Excel i ručne procedure,
+                operateri dobijaju jasne zadatke direktno na
+                mobilnim terminalima.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PREDNOSTI
+===================================================== -->
+
+<section class="benefits">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <div class="section-label">
+                PREDNOSTI
+            </div>
+
+            <h2>
+                Zašto uvesti WMS?
+            </h2>
+
+            <p>
+                Pravilno implementiran WMS donosi kontrolu,
+                brzinu i veću pouzdanost skladišnih operacija.
+            </p>
+
+        </div>
+
+
+        <div class="cards">
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    🎯
+                </div>
+
+                <h3>
+                    Veća preciznost
+                </h3>
+
+                <p>
+                    Smanjenje grešaka prilikom prijema,
+                    skladištenja, komisioniranja i otpreme.
+                </p>
+
+            </div>
+
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    ⚡
+                </div>
+
+                <h3>
+                    Veća produktivnost
+                </h3>
+
+                <p>
+                    Optimizacija rada operatera i smanjenje
+                    vremena potrebnog za obradu naloga.
+                </p>
+
+            </div>
+
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    👁️
+                </div>
+
+                <h3>
+                    Potpuna vidljivost
+                </h3>
+
+                <p>
+                    U svakom trenutku imate pregled stanja
+                    zaliha i aktivnosti u skladištu.
+                </p>
+
+            </div>
+
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    📍
+                </div>
+
+                <h3>
+                    Kontrola lokacija
+                </h3>
+
+                <p>
+                    Sistem zna gde se artikal nalazi i
+                    usmerava operatera ka odgovarajućoj lokaciji.
+                </p>
+
+            </div>
+
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    📈
+                </div>
+
+                <h3>
+                    Analitika
+                </h3>
+
+                <p>
+                    Praćenje ključnih pokazatelja i performansi
+                    skladišnih procesa.
+                </p>
+
+            </div>
+
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    🔗
+                </div>
+
+                <h3>
+                    Integracija
+                </h3>
+
+                <p>
+                    Povezivanje sa ERP, transportnim,
+                    finansijskim i drugim sistemima.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     MODULI
+===================================================== -->
+
+<section id="modules" class="modules">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <div class="section-label">
+                WMS MODULI
+            </div>
+
+            <h2>
+                Jedan sistem za kompletan tok robe
+            </h2>
+
+            <p>
+                Funkcionalnosti se mogu prilagoditi potrebama
+                konkretnog skladišta i poslovnog procesa.
+            </p>
+
+        </div>
+
+
+        <div class="module-grid">
+
+
+            <div class="module">
+
+                <div class="module-number">
+                    01
+                </div>
+
+                <div>
+
+                    <h3>
+                        Prijem robe
+                    </h3>
+
+                    <p>
+                        Evidencija prijema, kontrola količina,
+                        artikala, bar-kodova i drugih podataka.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="module">
+
+                <div class="module-number">
+                    02
+                </div>
+
+                <div>
+
+                    <h3>
+                        Put-away
+                    </h3>
+
+                    <p>
+                        Određivanje odgovarajuće skladišne
+                        lokacije za primljenu robu.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="module">
+
+                <div class="module-number">
+                    03
+                </div>
+
+                <div>
+
+                    <h3>
+                        Upravljanje zalihama
+                    </h3>
+
+                    <p>
+                        Pregled zaliha po artiklu, lokaciji,
+                        statusu, seriji ili drugim parametrima.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="module">
+
+                <div class="module-number">
+                    04
+                </div>
+
+                <div>
+
+                    <h3>
+                        Komisioniranje
+                    </h3>
+
+                    <p>
+                        Organizacija picking procesa i
+                        usmeravanje operatera kroz skladište.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="module">
+
+                <div class="module-number">
+                    05
+                </div>
+
+                <div>
+
+                    <h3>
+                        Replenishment
+                    </h3>
+
+                    <p>
+                        Automatsko kreiranje zadataka za
+                        dopunu picking lokacija.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="module">
+
+                <div class="module-number">
+                    06
+                </div>
+
+                <div>
+
+                    <h3>
+                        Pakovanje
+                    </h3>
+
+                    <p>
+                        Kontrola kompletiranja naloga i
+                        procesa pakovanja robe.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="module">
+
+                <div class="module-number">
+                    07
+                </div>
+
+                <div>
+
+                    <h3>
+                        Otpremanje
+                    </h3>
+
+                    <p>
+                        Kontrola pripreme i otpreme robe
+                        prema kupcu ili distributivnom kanalu.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="module">
+
+                <div class="module-number">
+                    08
+                </div>
+
+                <div>
+
+                    <h3>
+                        Inventura
+                    </h3>
+
+                    <p>
+                        Sistematsko i ciklično brojanje zaliha
+                        uz kontrolu rezultata.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="module">
+
+                <div class="module-number">
+                    09
+                </div>
+
+                <div>
+
+                    <h3>
+                        Reporting
+                    </h3>
+
+                    <p>
+                        Izveštaji i KPI pokazatelji za praćenje
+                        rada skladišta.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="module">
+
+                <div class="module-number">
+                    10
+                </div>
+
+                <div>
+
+                    <h3>
+                        Mobilni rad
+                    </h3>
+
+                    <p>
+                        Rad operatera putem mobilnih terminala
+                        i barkod tehnologije.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     IMPLEMENTACIJA
+===================================================== -->
+
+<section class="process">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <div class="section-label">
+                IMPLEMENTACIJA
+            </div>
+
+            <h2>
+                Kako izgleda WMS projekat?
+            </h2>
+
+            <p>
+                Od prve analize do stabilnog rada sistema.
+            </p>
+
+        </div>
+
+
+        <div class="process-grid">
+
+
+            <div class="process-item">
+
+                <div class="process-number">
+                    01
+                </div>
+
+                <h3>
+                    Analiza
+                </h3>
+
+                <p>
+                    Analiziramo postojeće skladišne procese,
+                    probleme i ciljeve.
+                </p>
+
+            </div>
+
+
+
+            <div class="process-item">
+
+                <div class="process-number">
+                    02
+                </div>
+
+                <h3>
+                    Dizajn
+                </h3>
+
+                <p>
+                    Definišemo strukturu skladišta,
+                    procese i funkcionalnosti sistema.
+                </p>
+
+            </div>
+
+
+
+            <div class="process-item">
+
+                <div class="process-number">
+                    03
+                </div>
+
+                <h3>
+                    Implementacija
+                </h3>
+
+                <p>
+                    Konfigurišemo sistem, povezujemo opremu
+                    i integrišemo poslovne sisteme.
+                </p>
+
+            </div>
+
+
+
+            <div class="process-item">
+
+                <div class="process-number">
+                    04
+                </div>
+
+                <h3>
+                    Podrška
+                </h3>
+
+                <p>
+                    Pratimo rad sistema i pružamo kontinuiranu
+                    podršku i dalji razvoj.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     INTEGRACIJE
+===================================================== -->
+
+<section class="integrations">
+
+    <div class="container">
+
+        <div class="integration-box">
+
+            <h2>
+                Povežite WMS sa ostatkom poslovanja
+            </h2>
+
+            <p>
+                WMS ne mora da bude izolovan sistem.
+                Može biti povezan sa postojećim poslovnim
+                aplikacijama i infrastrukturom.
+            </p>
+
+
+            <div class="integration-tags">
+
+                <div class="integration-tag">
+                    ERP
+                </div>
+
+                <div class="integration-tag">
+                    SAP
+                </div>
+
+                <div class="integration-tag">
+                    Microsoft Dynamics
+                </div>
+
+                <div class="integration-tag">
+                    Odoo
+                </div>
+
+                <div class="integration-tag">
+                    API
+                </div>
+
+                <div class="integration-tag">
+                    Barcode
+                </div>
+
+                <div class="integration-tag">
+                    RFID
+                </div>
+
+                <div class="integration-tag">
+                    Transport
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CTA
+===================================================== -->
+
+<section class="cta">
+
+    <div class="container">
+
+        <h2>
+            Razmišljate o uvođenju WMS-a?
+        </h2>
+
+        <p>
+            Razgovarajmo o vašem skladištu, procesima i
+            mogućnostima za unapređenje.
+        </p>
+
+        <a
+            href="index.html#contact"
+            class="btn"
+        >
+            Zatražite konsultaciju
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+
+            <div>
+
+                <div class="footer-logo">
+
+                    <img
+                        src="images/logo.png"
+                        alt="LOGISTIX"
+                    >
+
+                </div>
+
+                <p class="footer-about">
+                    Softverska i hardverska rešenja za savremenu
+                    logistiku, skladištenje i distribuciju.
+                </p>
+
+            </div>
+
+
+
+            <div class="footer-column">
+
+                <h4>
+                    Navigacija
+                </h4>
+
+                <ul>
+
+                    <li>
+                        <a href="index.html">
+                            Početna
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="index.html#about">
+                            O nama
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="wms.html">
+                            WMS
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="index.html#hardware">
+                            Hardver
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+
+            <div class="footer-column">
+
+                <h4>
+                    Kontakt
+                </h4>
+
+                <ul>
+
+                    <li>
+                        <a href="index.html#contact">
+                            Kontakt forma
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="mailto:info@logistix.rs">
+                            info@logistix.rs
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="tel:+381111234567">
+                            +381 11 123 4567
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            © 2026 LOGISTIX. Sva prava zadržana.
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+</body>
+</html>
