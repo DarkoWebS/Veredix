@@ -1,206 +1,1386 @@
-<section id="features" class="features">
+```html
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <div class="container">
+    <title>Transport i distribucija | ROADNET</title>
 
-        <div class="section-header">
+    <meta name="description"
+          content="ROADNET rešenje za planiranje i optimizaciju transporta i distribucije. Optimizacija ruta, vozila, isporuka, troškova i vremena uz povezivanje sa WMS i ERP sistemima.">
 
-            <div class="section-label">
-                FUNKCIONALNOSTI
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #0d2033;
+            --navy2: #132f48;
+            --blue: #1683d8;
+            --blue2: #39a7f3;
+            --light-blue: #edf7ff;
+            --green: #16a085;
+            --orange: #f39c38;
+            --text: #243746;
+            --muted: #6b7c89;
+            --light: #f5f8fb;
+            --border: #e1e8ee;
+            --white: #fff;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--text);
+            background: #fff;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: min(1180px, 92%);
+            margin: auto;
+        }
+
+        /* ================= HEADER ================= */
+
+        header {
+            height: 76px;
+            background: var(--navy);
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 3px 20px rgba(0,0,0,.12);
+        }
+
+        .nav {
+            height: 76px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 800;
+            letter-spacing: .3px;
+        }
+
+        .logo span {
+            color: var(--blue2);
+        }
+
+        .menu {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            font-size: 15px;
+        }
+
+        .menu a {
+            color: #d8e4ed;
+            transition: .2s;
+        }
+
+        .menu a:hover,
+        .menu a.active {
+            color: white;
+        }
+
+        .menu .contact {
+            background: var(--blue);
+            padding: 11px 20px;
+            border-radius: 6px;
+            color: white;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            background:
+                radial-gradient(circle at 80% 30%, rgba(40,160,235,.25), transparent 34%),
+                linear-gradient(135deg, #0d2033 0%, #153b59 100%);
+            color: white;
+            padding: 90px 0 105px;
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            color: #56b8fa;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 5vw, 62px);
+            line-height: 1.08;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: #43aaf2;
+        }
+
+        .hero p {
+            color: #d4e2ed;
+            font-size: 18px;
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 23px;
+            border-radius: 6px;
+            font-weight: 700;
+            transition: .2s;
+        }
+
+        .btn-primary {
+            background: var(--blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #0d70ba;
+        }
+
+        .btn-outline {
+            border: 1px solid #6386a0;
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255,255,255,.08);
+        }
+
+        /* ================= ROADNET DASHBOARD ================= */
+
+        .dashboard {
+            background: #fff;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 25px 60px rgba(0,0,0,.3);
+            color: var(--text);
+        }
+
+        .dashboard-top {
+            background: #f7f9fb;
+            border-bottom: 1px solid #e3e9ee;
+            padding: 13px 17px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dashboard-title {
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .live {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            color: var(--green);
+            font-weight: 700;
+        }
+
+        .live-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--green);
+        }
+
+        .map {
+            height: 330px;
+            position: relative;
+            overflow: hidden;
+            background:
+                linear-gradient(25deg, transparent 47%, #d8e0e6 48%, #d8e0e6 49%, transparent 50%),
+                linear-gradient(155deg, transparent 47%, #d8e0e6 48%, #d8e0e6 49%, transparent 50%),
+                #edf1f3;
+            background-size: 170px 130px;
+        }
+
+        .road {
+            position: absolute;
+            background: #fff;
+            height: 11px;
+            border: 1px solid #d7dee3;
+            transform-origin: left center;
+            border-radius: 20px;
+        }
+
+        .road.one {
+            width: 500px;
+            left: -40px;
+            top: 210px;
+            transform: rotate(-20deg);
+        }
+
+        .road.two {
+            width: 450px;
+            left: 100px;
+            top: 75px;
+            transform: rotate(25deg);
+        }
+
+        .road.three {
+            width: 390px;
+            left: 260px;
+            top: 250px;
+            transform: rotate(-46deg);
+        }
+
+        .route {
+            position: absolute;
+            width: 430px;
+            height: 120px;
+            border-top: 5px solid var(--blue);
+            border-radius: 50%;
+            transform: rotate(-18deg);
+            left: 95px;
+            top: 100px;
+            filter: drop-shadow(0 2px 2px rgba(0,0,0,.15));
+        }
+
+        .route2 {
+            position: absolute;
+            width: 270px;
+            height: 100px;
+            border-top: 5px solid var(--orange);
+            border-radius: 50%;
+            transform: rotate(30deg);
+            left: 230px;
+            top: 160px;
+        }
+
+        .marker {
+            position: absolute;
+            width: 17px;
+            height: 17px;
+            border-radius: 50%;
+            background: var(--blue);
+            border: 3px solid white;
+            box-shadow: 0 3px 8px rgba(0,0,0,.25);
+        }
+
+        .marker.start {
+            left: 80px;
+            top: 205px;
+            background: var(--green);
+        }
+
+        .marker.m1 {
+            left: 205px;
+            top: 155px;
+        }
+
+        .marker.m2 {
+            left: 315px;
+            top: 110px;
+        }
+
+        .marker.m3 {
+            left: 425px;
+            top: 145px;
+        }
+
+        .marker.end {
+            right: 70px;
+            top: 205px;
+            background: var(--orange);
+        }
+
+        .vehicle {
+            position: absolute;
+            background: var(--navy);
+            color: white;
+            padding: 7px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            box-shadow: 0 5px 12px rgba(0,0,0,.2);
+        }
+
+        .vehicle.v1 {
+            left: 275px;
+            top: 190px;
+        }
+
+        .vehicle.v2 {
+            left: 390px;
+            top: 235px;
+        }
+
+        .map-label {
+            position: absolute;
+            background: white;
+            padding: 5px 8px;
+            border-radius: 5px;
+            font-size: 10px;
+            box-shadow: 0 2px 7px rgba(0,0,0,.12);
+        }
+
+        .label1 {
+            left: 180px;
+            top: 90px;
+        }
+
+        .label2 {
+            right: 80px;
+            top: 105px;
+        }
+
+        .label3 {
+            left: 115px;
+            bottom: 55px;
+        }
+
+        .dashboard-bottom {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            border-top: 1px solid #e3e9ee;
+        }
+
+        .stat {
+            padding: 16px;
+            border-right: 1px solid #e3e9ee;
+        }
+
+        .stat:last-child {
+            border-right: none;
+        }
+
+        .stat small {
+            color: #8997a2;
+            display: block;
+            font-size: 10px;
+            margin-bottom: 3px;
+        }
+
+        .stat strong {
+            color: var(--navy);
+            font-size: 17px;
+        }
+
+        /* ================= INTRO ================= */
+
+        .section {
+            padding: 90px 0;
+        }
+
+        .light {
+            background: var(--light);
+        }
+
+        .section-title {
+            max-width: 760px;
+            text-align: center;
+            margin: 0 auto 55px;
+        }
+
+        .section-title .label {
+            color: var(--blue);
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 10px;
+        }
+
+        .section-title h2 {
+            font-size: 38px;
+            line-height: 1.2;
+            color: var(--navy);
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: var(--muted);
+            font-size: 17px;
+        }
+
+        /* ================= FEATURES ================= */
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 22px;
+        }
+
+        .feature {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 30px 27px;
+            border-radius: 10px;
+            transition: .25s;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(13,32,51,.09);
+            border-color: #b9d9ef;
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            background: var(--light-blue);
+            color: var(--blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            margin-bottom: 18px;
+        }
+
+        .feature h3 {
+            color: var(--navy);
+            font-size: 19px;
+            margin-bottom: 9px;
+        }
+
+        .feature p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* ================= TWO COLUMN ================= */
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 65px;
+            align-items: center;
+        }
+
+        .content-label {
+            color: var(--blue);
+            text-transform: uppercase;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+        }
+
+        .content h2 {
+            color: var(--navy);
+            font-size: 38px;
+            line-height: 1.18;
+            margin-bottom: 20px;
+        }
+
+        .content > p {
+            color: var(--muted);
+            margin-bottom: 24px;
+        }
+
+        .list {
+            list-style: none;
+        }
+
+        .list li {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 13px;
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .check {
+            color: var(--green);
+            font-weight: 800;
+        }
+
+        /* ================= VEHICLE PANEL ================= */
+
+        .vehicle-panel {
+            background: var(--navy);
+            border-radius: 13px;
+            padding: 30px;
+            color: white;
+            box-shadow: 0 20px 45px rgba(13,32,51,.18);
+        }
+
+        .vehicle-panel h3 {
+            margin-bottom: 22px;
+            font-size: 20px;
+        }
+
+        .vehicle-row {
+            display: grid;
+            grid-template-columns: 55px 1fr 80px;
+            gap: 15px;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #28445a;
+        }
+
+        .vehicle-row:last-child {
+            border-bottom: none;
+        }
+
+        .truck {
+            width: 42px;
+            height: 28px;
+            background: #2c91d5;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .truck:after {
+            content: "";
+            position: absolute;
+            right: -9px;
+            top: 7px;
+            width: 11px;
+            height: 21px;
+            background: #4ba9df;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .vehicle-info strong {
+            display: block;
+            font-size: 14px;
+        }
+
+        .vehicle-info span {
+            font-size: 11px;
+            color: #9eb3c2;
+        }
+
+        .vehicle-value {
+            text-align: right;
+            font-size: 12px;
+            color: #64bcf4;
+            font-weight: 700;
+        }
+
+        /* ================= KPI ================= */
+
+        .kpi {
+            background: linear-gradient(135deg,#0d2033,#173d5b);
+            color: white;
+        }
+
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 20px;
+        }
+
+        .kpi-card {
+            padding: 30px 20px;
+            border: 1px solid #2b4c64;
+            border-radius: 10px;
+            text-align: center;
+            background: rgba(255,255,255,.035);
+        }
+
+        .kpi-card strong {
+            display: block;
+            font-size: 38px;
+            color: #49aef3;
+            margin-bottom: 4px;
+        }
+
+        .kpi-card span {
+            color: #b8cbd8;
+            font-size: 14px;
+        }
+
+        /* ================= INTEGRATION ================= */
+
+        .integration {
+            display: grid;
+            grid-template-columns: repeat(5,1fr);
+            align-items: center;
+            gap: 0;
+            margin-top: 35px;
+        }
+
+        .integration-box {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 25px 15px;
+            text-align: center;
+            border-radius: 9px;
+            font-weight: 700;
+            color: var(--navy);
+        }
+
+        .integration-box small {
+            display: block;
+            color: var(--muted);
+            font-weight: normal;
+            font-size: 11px;
+            margin-top: 4px;
+        }
+
+        .integration-arrow {
+            text-align: center;
+            color: var(--blue);
+            font-size: 26px;
+        }
+
+        /* ================= CTA ================= */
+
+        .cta {
+            padding: 80px 0;
+            text-align: center;
+            background: linear-gradient(135deg,#1683d8,#105d9c);
+            color: white;
+        }
+
+        .cta h2 {
+            font-size: 39px;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            max-width: 680px;
+            margin: 0 auto 28px;
+            color: #dff1ff;
+            font-size: 17px;
+        }
+
+        .cta .btn {
+            background: white;
+            color: var(--navy);
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #091925;
+            color: #aebdca;
+            padding: 35px 0;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            color: white;
+            font-weight: 800;
+            font-size: 20px;
+        }
+
+        .footer-logo span {
+            color: var(--blue2);
+        }
+
+        footer p {
+            font-size: 13px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media(max-width: 950px) {
+
+            .hero-grid,
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .features {
+                grid-template-columns: repeat(2,1fr);
+            }
+
+            .kpi-grid {
+                grid-template-columns: repeat(2,1fr);
+            }
+
+            .integration {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .integration-arrow {
+                transform: rotate(90deg);
+            }
+        }
+
+        @media(max-width: 650px) {
+
+            .menu {
+                display: none;
+            }
+
+            .hero {
+                padding: 65px 0;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .kpi-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .dashboard-bottom {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .stat:nth-child(2) {
+                border-right: none;
+            }
+
+            .section {
+                padding: 65px 0;
+            }
+
+            .section-title h2,
+            .content h2,
+            .cta h2 {
+                font-size: 30px;
+            }
+
+            .footer {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+    <div class="container nav">
+
+        <a href="index.html" class="logo">
+            Logistic<span>Vision</span>
+        </a>
+
+        <nav class="menu">
+
+            <a href="index.html">Početna</a>
+
+            <a href="wms.html">
+                WMS
+            </a>
+
+            <a href="transport.html" class="active">
+                Transport i distribucija
+            </a>
+
+            <a href="integracije.html">
+                Integracije
+            </a>
+
+            <a href="#kontakt" class="contact">
+                Kontakt
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="container hero-grid">
+
+        <div>
+
+            <div class="eyebrow">
+                Transport • Distribucija • Optimizacija
             </div>
 
-            <h2>
-                Kompletno upravljanje distribucijom
-            </h2>
+            <h1>
+                Pametnije rute.<br>
+                <span>Efikasnija distribucija.</span>
+            </h1>
 
             <p>
-                Roadnet pokriva ključne aktivnosti od planiranja
-                do realizacije i analize distribucije.
+                ROADNET omogućava napredno planiranje i optimizaciju
+                transporta, raspoređivanje vozila i vozača i kontrolu
+                realizacije isporuka – uz cilj da se svaki kilometar
+                i svako vozilo iskoriste maksimalno efikasno.
             </p>
+
+            <div class="buttons">
+
+                <a href="#roadnet" class="btn btn-primary">
+                    Saznajte više o ROADNET-u
+                </a>
+
+                <a href="#kontakt" class="btn btn-outline">
+                    Zatražite prezentaciju
+                </a>
+
+            </div>
 
         </div>
 
 
-        <div class="feature-grid">
+        <!-- DASHBOARD -->
 
+        <div class="dashboard">
 
-            <div class="feature">
+            <div class="dashboard-top">
 
-                <div class="feature-number">
-                    01
+                <div class="dashboard-title">
+                    ROADNET • Route Optimization
                 </div>
 
-                <div>
-
-                    <h3>
-                        Planiranje ruta
-                    </h3>
-
-                    <p>
-                        Automatsko kreiranje i optimizacija dnevnih
-                        distributivnih ruta.
-                    </p>
-
+                <div class="live">
+                    <div class="live-dot"></div>
+                    LIVE
                 </div>
 
             </div>
 
 
-            <div class="feature">
+            <div class="map">
 
-                <div class="feature-number">
-                    02
+                <div class="road one"></div>
+                <div class="road two"></div>
+                <div class="road three"></div>
+
+                <div class="route"></div>
+                <div class="route2"></div>
+
+                <div class="marker start"></div>
+                <div class="marker m1"></div>
+                <div class="marker m2"></div>
+                <div class="marker m3"></div>
+                <div class="marker end"></div>
+
+                <div class="vehicle v1">
+                    🚚 Vozilo 01
                 </div>
 
-                <div>
-
-                    <h3>
-                        Optimizacija troškova
-                    </h3>
-
-                    <p>
-                        Smanjenje nepotrebnih kilometara i bolje
-                        iskorišćenje raspoloživih vozila.
-                    </p>
-
+                <div class="vehicle v2">
+                    🚚 Vozilo 02
                 </div>
 
-            </div>
-
-
-            <div class="feature">
-
-                <div class="feature-number">
-                    03
+                <div class="map-label label1">
+                    Beograd
                 </div>
 
-                <div>
+                <div class="map-label label2">
+                    Novi Sad
+                </div>
 
-                    <h3>
-                        Upravljanje vozilima
-                    </h3>
-
-                    <p>
-                        Planiranje distribucije uzimajući u obzir
-                        kapacitet i karakteristike vozila.
-                    </p>
-
+                <div class="map-label label3">
+                    Magacin
                 </div>
 
             </div>
 
 
-            <div class="feature">
+            <div class="dashboard-bottom">
 
-                <div class="feature-number">
-                    04
+                <div class="stat">
+                    <small>Vozila</small>
+                    <strong>24</strong>
                 </div>
 
-                <div>
-
-                    <h3>
-                        Vremenska okna
-                    </h3>
-
-                    <p>
-                        Poštovanje dogovorenih termina i ograničenja
-                        prilikom planiranja isporuka.
-                    </p>
-
+                <div class="stat">
+                    <small>Rute</small>
+                    <strong>31</strong>
                 </div>
 
-            </div>
-
-
-            <div class="feature">
-
-                <div class="feature-number">
-                    05
+                <div class="stat">
+                    <small>Isporuke</small>
+                    <strong>486</strong>
                 </div>
 
-                <div>
-
-                    <h3>
-                        Dispečing
-                    </h3>
-
-                    <p>
-                        Pregled i operativno upravljanje dnevnim
-                        rutama i nalozima.
-                    </p>
-
+                <div class="stat">
+                    <small>Optimizacija</small>
+                    <strong>18.4%</strong>
                 </div>
 
             </div>
-
-
-            <div class="feature">
-
-                <div class="feature-number">
-                    06
-                </div>
-
-                <div>
-
-                    <h3>
-                        Praćenje realizacije
-                    </h3>
-
-                    <p>
-                        Pregled izvršenja ruta i poređenje
-                        planiranih i ostvarenih aktivnosti.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="feature">
-
-                <div class="feature-number">
-                    07
-                </div>
-
-                <div>
-
-                    <h3>
-                        Mobilni rad vozača
-                    </h3>
-
-                    <p>
-                        Digitalna podrška vozačima tokom realizacije
-                        distributivnih ruta.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="feature">
-
-                <div class="feature-number">
-                    08
-                </div>
-
-                <div>
-
-                    <h3>
-                        Analitika i KPI
-                    </h3>
-
-                    <p>
-                        Izveštaji i pokazatelji za analizu performansi
-                        transporta i distribucije.
-                    </p>
-
-                </div>
-
-            </div>
-
 
         </div>
 
     </div>
 
 </section>
+
+
+<!-- ================= ROADNET ================= -->
+
+<section class="section" id="roadnet">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <div class="label">
+                ROADNET
+            </div>
+
+            <h2>
+                Planirajte transport na osnovu stvarnih ograničenja
+            </h2>
+
+            <p>
+                ROADNET uzima u obzir vozila, vozače, kapacitete,
+                lokacije kupaca, vremenske prozore i druga pravila
+                kako bi pronašao optimalan plan distribucije.
+            </p>
+
+        </div>
+
+
+        <div class="features">
+
+            <div class="feature">
+
+                <div class="feature-icon">⌁</div>
+
+                <h3>Optimizacija ruta</h3>
+
+                <p>
+                    Automatsko određivanje optimalnog redosleda
+                    isporuka i ruta za sva vozila.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">🚚</div>
+
+                <h3>Planiranje vozila</h3>
+
+                <p>
+                    Raspoređivanje vozila prema kapacitetu,
+                    tipu vozila, lokaciji i raspoloživosti.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">◷</div>
+
+                <h3>Vremenski prozori</h3>
+
+                <p>
+                    Poštovanje dogovorenih termina isporuke
+                    i radnog vremena kupaca.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">↔</div>
+
+                <h3>Više depoa</h3>
+
+                <p>
+                    Planiranje distribucije iz jednog ili više
+                    magacina i distributivnih centara.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">▣</div>
+
+                <h3>Kapacitet vozila</h3>
+
+                <p>
+                    Kontrola zapremine, težine, broja paketa
+                    i drugih ograničenja vozila.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">↗</div>
+
+                <h3>Praćenje realizacije</h3>
+
+                <p>
+                    Poređenje planiranog i realizovanog transporta
+                    i analiza odstupanja.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= OPTIMIZATION ================= -->
+
+<section class="section light">
+
+    <div class="container two-column">
+
+        <div class="content">
+
+            <div class="content-label">
+                Inteligentno planiranje
+            </div>
+
+            <h2>
+                Ne planirajte rute ručno.
+            </h2>
+
+            <p>
+                Kada broj vozila, kupaca i dnevnih isporuka poraste,
+                ručno planiranje postaje sve složenije.
+                ROADNET omogućava da se planiranje automatizuje
+                i zasniva na jasno definisanim pravilima.
+            </p>
+
+            <ul class="list">
+
+                <li>
+                    <span class="check">✓</span>
+                    Optimalan redosled isporuka
+                </li>
+
+                <li>
+                    <span class="check">✓</span>
+                    Maksimalno iskorišćenje kapaciteta vozila
+                </li>
+
+                <li>
+                    <span class="check">✓</span>
+                    Kontrola radnog vremena vozača
+                </li>
+
+                <li>
+                    <span class="check">✓</span>
+                    Vremenski prozori kupaca
+                </li>
+
+                <li>
+                    <span class="check">✓</span>
+                    Smanjenje nepotrebne kilometraže
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <div class="vehicle-panel">
+
+            <h3>
+                Primer dnevnog plana
+            </h3>
+
+
+            <div class="vehicle-row">
+
+                <div class="truck"></div>
+
+                <div class="vehicle-info">
+                    <strong>Vozilo 01</strong>
+                    <span>18 isporuka • 420 km</span>
+                </div>
+
+                <div class="vehicle-value">
+                    92%
+                </div>
+
+            </div>
+
+
+            <div class="vehicle-row">
+
+                <div class="truck"></div>
+
+                <div class="vehicle-info">
+                    <strong>Vozilo 02</strong>
+                    <span>21 isporuka • 385 km</span>
+                </div>
+
+                <div class="vehicle-value">
+                    88%
+                </div>
+
+            </div>
+
+
+            <div class="vehicle-row">
+
+                <div class="truck"></div>
+
+                <div class="vehicle-info">
+                    <strong>Vozilo 03</strong>
+                    <span>17 isporuka • 341 km</span>
+                </div>
+
+                <div class="vehicle-value">
+                    94%
+                </div>
+
+            </div>
+
+
+            <div class="vehicle-row">
+
+                <div class="truck"></div>
+
+                <div class="vehicle-info">
+                    <strong>Vozilo 04</strong>
+                    <span>20 isporuka • 397 km</span>
+                </div>
+
+                <div class="vehicle-value">
+                    90%
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= KPI ================= -->
+
+<section class="section kpi">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <div class="label">
+                Kontrola troškova
+            </div>
+
+            <h2 style="color:white;">
+                Transport pretvaramo u merljiv proces
+            </h2>
+
+            <p>
+                Pratite ključne pokazatelje i donosite odluke
+                na osnovu podataka.
+            </p>
+
+        </div>
+
+
+        <div class="kpi-grid">
+
+            <div class="kpi-card">
+                <strong>KM</strong>
+                <span>Pređena kilometraža</span>
+            </div>
+
+            <div class="kpi-card">
+                <strong>€</strong>
+                <span>Trošak transporta</span>
+            </div>
+
+            <div class="kpi-card">
+                <strong>OTIF</strong>
+                <span>Tačnost isporuke</span>
+            </div>
+
+            <div class="kpi-card">
+                <strong>CO₂</strong>
+                <span>Emisija po isporuci</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= WMS / ERP INTEGRATION ================= -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <div class="label">
+                Integracija
+            </div>
+
+            <h2>
+                Transport povezan sa ostatkom sistema
+            </h2>
+
+            <p>
+                ROADNET može biti deo šireg logističkog procesa,
+                od prijema porudžbine do konačne isporuke.
+            </p>
+
+        </div>
+
+
+        <div class="integration">
+
+            <div class="integration-box">
+                ERP
+                <small>Porudžbine</small>
+            </div>
+
+            <div class="integration-arrow">
+                →
+            </div>
+
+            <div class="integration-box">
+                WMS
+                <small>Priprema robe</small>
+            </div>
+
+            <div class="integration-arrow">
+                →
+            </div>
+
+            <div class="integration-box">
+                ROADNET
+                <small>Planiranje ruta</small>
+            </div>
+
+        </div>
+
+
+        <div class="integration" style="margin-top:15px;">
+
+            <div class="integration-box">
+                GPS / Telematika
+                <small>Praćenje vozila</small>
+            </div>
+
+            <div class="integration-arrow">
+                →
+            </div>
+
+            <div class="integration-box">
+                Kurirske službe
+                <small>Status isporuke</small>
+            </div>
+
+            <div class="integration-arrow">
+                →
+            </div>
+
+            <div class="integration-box">
+                ERP
+                <small>Realizacija</small>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CTA ================= -->
+
+<section class="cta" id="kontakt">
+
+    <div class="container">
+
+        <h2>
+            Koliko možete da uštedite optimizacijom ruta?
+        </h2>
+
+        <p>
+            Ako imate sopstveni vozni park, veliki broj dnevnih isporuka
+            ili složenu distribuciju, možemo analizirati vaš proces
+            i predložiti odgovarajuće rešenje.
+        </p>
+
+        <a href="mailto:info@vasadomena.rs" class="btn">
+            Zatražite prezentaciju
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="container footer">
+
+        <div class="footer-logo">
+            Logistic<span>Vision</span>
+        </div>
+
+        <p>
+            WMS • Transport • Distribucija • Integracije
+        </p>
+
+        <p>
+            © 2026 Sva prava zadržana.
+        </p>
+
+    </div>
+
+</footer>
+
+</body>
+</html>
+```
