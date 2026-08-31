@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Integracije poslovnih sistema | WMS, TMS, ERP i logistika</title>
+
+    <meta name="description"
+          content="Integracija WMS i transportnih rešenja sa ERP, TMS, kurirskim službama, e-commerce platformama i drugim poslovnim sistemima putem API, XML, CSV, Excel i direktne baze podataka.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --dark: #102235;
+            --dark2: #17344d;
+            --blue: #1479d1;
+            --blue-light: #eaf4fd;
+            --green: #16a085;
+            --text: #243746;
+            --muted: #667786;
+            --light: #f5f8fb;
+            --white: #ffffff;
+            --border: #dfe7ee;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--text);
+            background: #fff;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: min(1180px, 92%);
+            margin: auto;
+        }
+
+        /* ================= HEADER ================= */
+
+        header {
+            background: var(--dark);
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,.12);
+        }
+
+        .nav {
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 700;
+            letter-spacing: .5px;
+        }
+
+        .logo span {
+            color: #3da9ff;
+        }
+
+        .menu {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            font-size: 15px;
+        }
+
+        .menu a {
+            color: #dce8f2;
+            transition: .2s;
+        }
+
+        .menu a:hover,
+        .menu a.active {
+            color: white;
+        }
+
+        .menu .contact {
+            background: var(--blue);
+            padding: 11px 20px;
+            border-radius: 6px;
+            color: white;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            background:
+                radial-gradient(circle at 80% 20%, rgba(35,141,222,.25), transparent 35%),
+                linear-gradient(135deg, #102235, #173c5a);
+            color: white;
+            padding: 90px 0 100px;
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.05fr .95fr;
+            align-items: center;
+            gap: 70px;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            color: #62b8ff;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 5vw, 64px);
+            line-height: 1.08;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: #45a9f5;
+        }
+
+        .hero p {
+            font-size: 19px;
+            color: #d2e0eb;
+            max-width: 650px;
+            margin-bottom: 32px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 24px;
+            border-radius: 6px;
+            font-weight: 700;
+            transition: .2s;
+        }
+
+        .btn-primary {
+            background: var(--blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #0f69b8;
+        }
+
+        .btn-outline {
+            border: 1px solid #6b91ad;
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255,255,255,.08);
+        }
+
+        /* ================= INTEGRATION VISUAL ================= */
+
+        .integration-visual {
+            position: relative;
+            min-height: 390px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .central-system {
+            width: 190px;
+            height: 150px;
+            border-radius: 18px;
+            background: linear-gradient(145deg, #218bd9, #1263a3);
+            box-shadow: 0 20px 50px rgba(0,0,0,.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            position: relative;
+            z-index: 3;
+        }
+
+        .central-system strong {
+            font-size: 22px;
+        }
+
+        .central-system small {
+            margin-top: 5px;
+            color: #d9efff;
+        }
+
+        .node {
+            position: absolute;
+            background: white;
+            color: var(--dark);
+            width: 125px;
+            min-height: 70px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-weight: 700;
+            font-size: 14px;
+            box-shadow: 0 10px 30px rgba(0,0,0,.18);
+            z-index: 4;
+        }
+
+        .node.erp {
+            top: 10px;
+            left: 10px;
+        }
+
+        .node.tms {
+            top: 10px;
+            right: 10px;
+        }
+
+        .node.courier {
+            bottom: 10px;
+            left: 10px;
+        }
+
+        .node.ecom {
+            bottom: 10px;
+            right: 10px;
+        }
+
+        .connector {
+            position: absolute;
+            height: 2px;
+            background: #3d9de0;
+            opacity: .65;
+            transform-origin: left center;
+            z-index: 1;
+        }
+
+        .line1 {
+            width: 190px;
+            transform: rotate(28deg);
+            left: 155px;
+            top: 145px;
+        }
+
+        .line2 {
+            width: 190px;
+            transform: rotate(-28deg);
+            left: 155px;
+            top: 245px;
+        }
+
+        .line3 {
+            width: 190px;
+            transform: rotate(-28deg);
+            left: 330px;
+            top: 145px;
+        }
+
+        .line4 {
+            width: 190px;
+            transform: rotate(28deg);
+            left: 330px;
+            top: 245px;
+        }
+
+        /* ================= INTRO ================= */
+
+        .section {
+            padding: 90px 0;
+        }
+
+        .section.light {
+            background: var(--light);
+        }
+
+        .section-header {
+            max-width: 760px;
+            margin: 0 auto 55px;
+            text-align: center;
+        }
+
+        .section-header .label {
+            color: var(--blue);
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1.3px;
+            margin-bottom: 12px;
+        }
+
+        .section-header h2 {
+            color: var(--dark);
+            font-size: 38px;
+            line-height: 1.2;
+            margin-bottom: 17px;
+        }
+
+        .section-header p {
+            color: var(--muted);
+            font-size: 17px;
+        }
+
+        /* ================= SYSTEMS ================= */
+
+        .systems {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .system-card {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 30px 24px;
+            border-radius: 10px;
+            transition: .25s;
+        }
+
+        .system-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(16,34,53,.1);
+            border-color: #b9d9f2;
+        }
+
+        .icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 10px;
+            background: var(--blue-light);
+            color: var(--blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 23px;
+            margin-bottom: 20px;
+        }
+
+        .system-card h3 {
+            color: var(--dark);
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .system-card p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* ================= METHODS ================= */
+
+        .methods-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .method {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 30px;
+        }
+
+        .method-code {
+            display: inline-block;
+            background: var(--dark);
+            color: white;
+            padding: 6px 11px;
+            border-radius: 5px;
+            font-family: Consolas, monospace;
+            font-size: 13px;
+            margin-bottom: 18px;
+        }
+
+        .method h3 {
+            color: var(--dark);
+            margin-bottom: 9px;
+        }
+
+        .method p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* ================= DATA FLOW ================= */
+
+        .flow-section {
+            background: var(--dark);
+            color: white;
+        }
+
+        .flow-section .section-header h2 {
+            color: white;
+        }
+
+        .flow-section .section-header p {
+            color: #bdcedb;
+        }
+
+        .flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .flow-item {
+            min-width: 190px;
+            padding: 24px;
+            text-align: center;
+            background: #17344d;
+            border: 1px solid #31556e;
+            border-radius: 9px;
+        }
+
+        .flow-item strong {
+            display: block;
+            font-size: 17px;
+            margin-bottom: 5px;
+        }
+
+        .flow-item span {
+            font-size: 13px;
+            color: #b8cbd9;
+        }
+
+        .arrow {
+            color: #4aa9e9;
+            font-size: 30px;
+            padding: 0 12px;
+        }
+
+        /* ================= BENEFITS ================= */
+
+        .benefits {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .benefit {
+            display: flex;
+            gap: 18px;
+            padding: 25px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+        }
+
+        .check {
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #e5f7f3;
+            color: var(--green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .benefit h3 {
+            color: var(--dark);
+            margin-bottom: 5px;
+            font-size: 17px;
+        }
+
+        .benefit p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* ================= CTA ================= */
+
+        .cta {
+            padding: 75px 0;
+            background: linear-gradient(135deg, #1479d1, #125da0);
+            color: white;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            max-width: 680px;
+            margin: 0 auto 28px;
+            color: #dcefff;
+            font-size: 17px;
+        }
+
+        .cta .btn {
+            background: white;
+            color: var(--dark);
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #0c1b29;
+            color: #aebdca;
+            padding: 35px 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-logo {
+            color: white;
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .footer-logo span {
+            color: #3da9ff;
+        }
+
+        footer p {
+            font-size: 13px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 900px) {
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .integration-visual {
+                max-width: 600px;
+                margin: auto;
+            }
+
+            .systems {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .methods-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 650px) {
+
+            .nav {
+                min-height: 65px;
+            }
+
+            .menu {
+                display: none;
+            }
+
+            .hero {
+                padding: 65px 0;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            .integration-visual {
+                transform: scale(.75);
+                margin: -40px auto;
+            }
+
+            .systems,
+            .methods-grid,
+            .benefits {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 65px 0;
+            }
+
+            .section-header h2,
+            .cta h2 {
+                font-size: 30px;
+            }
+
+            .flow {
+                flex-direction: column;
+            }
+
+            .arrow {
+                transform: rotate(90deg);
+                padding: 8px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+    <div class="container nav">
+
+        <a href="index.html" class="logo">
+            Logistic<span>Vision</span>
+        </a>
+
+        <nav class="menu">
+            <a href="index.html">Početna</a>
+            <a href="wms.html">WMS</a>
+            <a href="transport.html">Transport i distribucija</a>
+            <a href="integracije.html" class="active">Integracije</a>
+            <a href="#kontakt" class="contact">Kontakt</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="container hero-grid">
+
+        <div>
+
+            <div class="eyebrow">
+                Integracija sistema
+            </div>
+
+            <h1>
+                Svi vaši sistemi.<br>
+                <span>Jedan povezan proces.</span>
+            </h1>
+
+            <p>
+                Povezujemo WMS, transport, ERP, TMS, e-commerce,
+                kurirske službe i druge poslovne sisteme u jedinstven
+                tok podataka – bez ručnog prepisivanja i nepotrebnog
+                dupliranja podataka.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#kontakt" class="btn btn-primary">
+                    Razgovarajmo o integraciji
+                </a>
+
+                <a href="#nacini" class="btn btn-outline">
+                    Načini integracije
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="integration-visual">
+
+            <div class="node erp">
+                ERP
+            </div>
+
+            <div class="node tms">
+                TMS
+            </div>
+
+            <div class="node courier">
+                Kurirske službe
+            </div>
+
+            <div class="node ecom">
+                E-commerce
+            </div>
+
+            <div class="central-system">
+                <strong>WMS</strong>
+                <small>Centralni sistem</small>
+            </div>
+
+            <div class="connector line1"></div>
+            <div class="connector line2"></div>
+            <div class="connector line3"></div>
+            <div class="connector line4"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= UVOD ================= -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <div class="label">
+                Povezivanje poslovnih sistema
+            </div>
+
+            <h2>
+                Integracija sa sistemima koje već koristite
+            </h2>
+
+            <p>
+                Ne morate menjati postojeću infrastrukturu da biste
+                unapredili logističke procese. Naša rešenja se prilagođavaju
+                vašem IT okruženju i načinu razmene podataka.
+            </p>
+
+        </div>
+
+
+        <div class="systems">
+
+            <div class="system-card">
+                <div class="icon">▣</div>
+                <h3>ERP sistemi</h3>
+                <p>
+                    Razmena artikala, partnera, porudžbina, prijema,
+                    otprema, zaliha i drugih poslovnih podataka sa ERP sistemom.
+                </p>
+            </div>
+
+            <div class="system-card">
+                <div class="icon">↗</div>
+                <h3>TMS</h3>
+                <p>
+                    Povezivanje skladišnih i transportnih procesa,
+                    naloga za isporuku, statusa i informacija o realizaciji.
+                </p>
+            </div>
+
+            <div class="system-card">
+                <div class="icon">▱</div>
+                <h3>Kurirske službe</h3>
+                <p>
+                    Automatska razmena naloga, adresa, paketa,
+                    statusa pošiljaka i povratnih informacija.
+                </p>
+            </div>
+
+            <div class="system-card">
+                <div class="icon">🛒</div>
+                <h3>E-commerce</h3>
+                <p>
+                    Povezivanje web prodavnica i marketplace sistema
+                    sa skladištem radi automatizacije obrade porudžbina.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= NACINI ================= -->
+
+<section class="section light" id="nacini">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <div class="label">
+                Tehnologije
+            </div>
+
+            <h2>
+                Integracija na način koji odgovara vašem sistemu
+            </h2>
+
+            <p>
+                Podržavamo različite tehnologije i formate razmene podataka,
+                od modernih API servisa do tradicionalne razmene datoteka.
+            </p>
+
+        </div>
+
+
+        <div class="methods-grid">
+
+            <div class="method">
+
+                <span class="method-code">REST / API</span>
+
+                <h3>API integracija</h3>
+
+                <p>
+                    Brza dvosmerna komunikacija između sistema.
+                    Pogodna za ERP, TMS, e-commerce, kurirske službe
+                    i moderne poslovne aplikacije.
+                </p>
+
+            </div>
+
+
+            <div class="method">
+
+                <span class="method-code">XML</span>
+
+                <h3>XML razmena</h3>
+
+                <p>
+                    Standardizovana razmena strukturiranih poslovnih
+                    podataka između različitih aplikacija i informacionih sistema.
+                </p>
+
+            </div>
+
+
+            <div class="method">
+
+                <span class="method-code">CSV</span>
+
+                <h3>CSV datoteke</h3>
+
+                <p>
+                    Jednostavan i pouzdan način razmene podataka kada
+                    druga strana nema API ili zahtev za direktnom integracijom.
+                </p>
+
+            </div>
+
+
+            <div class="method">
+
+                <span class="method-code">XLS / XLSX</span>
+
+                <h3>Excel</h3>
+
+                <p>
+                    Automatizovan import i export podataka iz Excel
+                    dokumenata za sisteme koji koriste tabelarnu razmenu podataka.
+                </p>
+
+            </div>
+
+
+            <div class="method">
+
+                <span class="method-code">SQL</span>
+
+                <h3>Baza podataka</h3>
+
+                <p>
+                    Direktna razmena podataka sa SQL bazama kada poslovni
+                    sistem omogućava kontrolisan pristup tabelama ili view-ovima.
+                </p>
+
+            </div>
+
+
+            <div class="method">
+
+                <span class="method-code">EDI</span>
+
+                <h3>EDI i standardizovana razmena</h3>
+
+                <p>
+                    Elektronska razmena poslovnih dokumenata između
+                    kompanija i njihovih informacionih sistema.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= TOK PODATAKA ================= -->
+
+<section class="section flow-section">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <div class="label">
+                Automatizovan tok podataka
+            </div>
+
+            <h2>
+                Od porudžbine do isporuke – bez ručnog unosa
+            </h2>
+
+            <p>
+                Informacije se automatski prenose između sistema,
+                a svaki proces ostaje kontrolisan i sledljiv.
+            </p>
+
+        </div>
+
+
+        <div class="flow">
+
+            <div class="flow-item">
+                <strong>ERP / E-commerce</strong>
+                <span>Porudžbina</span>
+            </div>
+
+            <div class="arrow">→</div>
+
+            <div class="flow-item">
+                <strong>WMS</strong>
+                <span>Obrada i skladištenje</span>
+            </div>
+
+            <div class="arrow">→</div>
+
+            <div class="flow-item">
+                <strong>TMS / ROADNET</strong>
+                <span>Planiranje transporta</span>
+            </div>
+
+            <div class="arrow">→</div>
+
+            <div class="flow-item">
+                <strong>Kurir / Vozilo</strong>
+                <span>Isporuka</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= BENEFITI ================= -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <div class="label">
+                Prednosti
+            </div>
+
+            <h2>
+                Šta dobijate integracijom?
+            </h2>
+
+            <p>
+                Cilj integracije nije samo razmena podataka,
+                već automatizacija kompletnog poslovnog procesa.
+            </p>
+
+        </div>
+
+
+        <div class="benefits">
+
+            <div class="benefit">
+
+                <div class="check">✓</div>
+
+                <div>
+                    <h3>Manje ručnog rada</h3>
+                    <p>
+                        Podaci se automatski prenose između sistema,
+                        bez ponovnog unosa i prepisivanja.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="benefit">
+
+                <div class="check">✓</div>
+
+                <div>
+                    <h3>Manje grešaka</h3>
+                    <p>
+                        Automatizovana razmena smanjuje mogućnost
+                        greške prilikom unosa i prenosa podataka.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="benefit">
+
+                <div class="check">✓</div>
+
+                <div>
+                    <h3>Podaci u realnom vremenu</h3>
+                    <p>
+                        Statusi porudžbina, zaliha, transporta i isporuke
+                        mogu biti dostupni svim povezanim sistemima.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="benefit">
+
+                <div class="check">✓</div>
+
+                <div>
+                    <h3>Jedinstven tok procesa</h3>
+                    <p>
+                        ERP, WMS, transport i distribucija funkcionišu
+                        kao povezani deo jednog poslovnog procesa.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="benefit">
+
+                <div class="check">✓</div>
+
+                <div>
+                    <h3>Fleksibilnost</h3>
+                    <p>
+                        Integracija se može prilagoditi postojećim
+                        sistemima, formatima i poslovnim pravilima.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="benefit">
+
+                <div class="check">✓</div>
+
+                <div>
+                    <h3>Skalabilnost</h3>
+                    <p>
+                        Novi sistemi, partneri i načini razmene podataka
+                        mogu se dodavati bez promene celokupne arhitekture.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CTA ================= -->
+
+<section class="cta" id="kontakt">
+
+    <div class="container">
+
+        <h2>
+            Imate sistem koji treba povezati?
+        </h2>
+
+        <p>
+            Bez obzira da li koristite ERP, TMS, e-commerce platformu,
+            kurirsku službu ili sopstvenu aplikaciju – možemo definisati
+            način razmene podataka i povezati ga sa vašim logističkim sistemom.
+        </p>
+
+        <a href="mailto:info@vasadomena.rs" class="btn">
+            Zatražite integraciju
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="container footer-content">
+
+        <div class="footer-logo">
+            Logistic<span>Vision</span>
+        </div>
+
+        <p>
+            WMS • Transport • Distribucija • Integracije
+        </p>
+
+        <p>
+            © 2026 Sva prava zadržana.
+        </p>
+
+    </div>
+
+</footer>
+
+</body>
+</html>
