@@ -400,6 +400,7 @@
 
 /* MOBILE */
 
+
 @media (max-width: 700px) {
 
     .nav-dropdown {
@@ -412,16 +413,25 @@
     }
 
     .dropdown-menu {
-        position: static;
-        transform: none;
+        position: absolute;
 
-        width: 100%;
-        margin-top: 10px;
+        top: calc(100% + 5px);
+        left: 50%;
+
+        transform: translateX(-50%);
+
+        width: 90vw;
+        max-width: 400px;
+
+        margin: 0;
 
         display: none;
 
-        box-shadow: none;
+        background: white;
         border: 1px solid #e7ebf0;
+        border-radius: 12px;
+
+        box-shadow: 0 15px 35px rgba(30,60,90,0.15);
 
         padding: 10px;
 
@@ -431,14 +441,17 @@
     }
 
     .nav-dropdown.mobile-open .dropdown-menu {
-        display: block;
+        display: grid;
+        grid-template-columns: 1fr;
     }
 
     .dropdown-item {
-        padding: 10px;
+        padding: 12px;
+        text-align: left;
     }
 
 }
+        
         /* =====================================================
            O NAMA
         ===================================================== */
