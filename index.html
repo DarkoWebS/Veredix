@@ -283,7 +283,152 @@
             font-size: 17px;
         }
 
+/* =====================================================
+   DROPDOWN - SOFTVERSKA REŠENJA
+===================================================== */
 
+.nav-dropdown {
+    position: relative;
+}
+
+.nav-dropdown > a {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.nav-arrow {
+    font-size: 11px;
+    transition: 0.3s;
+}
+
+.nav-dropdown:hover .nav-arrow {
+    transform: rotate(180deg);
+}
+
+/* Padajući meni */
+
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + 18px);
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+
+    width: 650px;
+    padding: 25px;
+
+    background: white;
+    border: 1px solid #e7ebf0;
+    border-radius: 12px;
+
+    box-shadow: 0 20px 45px rgba(16,42,67,0.14);
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition: 0.25s ease;
+}
+
+/* Otvaranje na hover */
+
+.nav-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Stavke */
+
+.dropdown-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+
+    padding: 15px;
+
+    border-radius: 9px;
+
+    transition: 0.2s;
+}
+
+.dropdown-item:hover {
+    background: #f4f8fd;
+}
+
+/* Ikonica */
+
+.dropdown-icon {
+    width: 42px;
+    height: 42px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    background: #e8f2ff;
+
+    font-size: 20px;
+}
+
+/* Tekst */
+
+.dropdown-text strong {
+    display: block;
+    color: #102a43;
+    font-size: 15px;
+    margin-bottom: 3px;
+}
+
+.dropdown-text span {
+    display: block;
+    color: #667085;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .dropdown-menu {
+        position: static;
+        transform: none;
+
+        width: 100%;
+
+        display: block;
+
+        box-shadow: none;
+        border: none;
+
+        padding: 10px 0;
+
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    .nav-dropdown:hover .dropdown-menu {
+        transform: none;
+    }
+
+    .dropdown-item {
+        padding: 10px;
+    }
+
+}
         /* =====================================================
            O NAMA
         ===================================================== */
@@ -924,11 +1069,150 @@
             <li>
                 <a href="#about">O nama</a>
             </li>
-
+/*
             <li>
                 <a href="#software">Softverska rešenja</a>
             </li>
+*/
+            <li class="nav-dropdown">
 
+    <a href="#software">
+        Softverska rešenja
+        <span class="nav-arrow">▼</span>
+    </a>
+
+    <div class="dropdown-menu">
+
+        <a href="wms.html" class="dropdown-item">
+
+            <div class="dropdown-icon">
+                📦
+            </div>
+
+            <div class="dropdown-text">
+                <strong>WMS – Mantis Logistic Vision</strong>
+                <span>
+                    Upravljanje skladištem i zalihama
+                </span>
+            </div>
+
+        </a>
+
+
+        <a href="TransportIDistribucija.html" class="dropdown-item">
+
+            <div class="dropdown-icon">
+                🚚
+            </div>
+
+            <div class="dropdown-text">
+                <strong>Transport & Distribucija</strong>
+                <span>
+                    Planiranje ruta i distribucije
+                </span>
+            </div>
+
+        </a>
+
+
+        <a href="Reporting.html" class="dropdown-item">
+
+            <div class="dropdown-icon">
+                📊
+            </div>
+
+            <div class="dropdown-text">
+                <strong>Reporting & Analytics</strong>
+                <span>
+                    KPI pokazatelji i analiza skladišta
+                </span>
+            </div>
+
+        </a>
+
+
+        <a href="Integracije.html" class="dropdown-item">
+
+            <div class="dropdown-icon">
+                🔗
+            </div>
+
+            <div class="dropdown-text">
+                <strong>Integracije</strong>
+                <span>
+                    ERP, TMS, API, XML, CSV i baze podataka
+                </span>
+            </div>
+
+        </a>
+
+
+        <a href="so99.html" class="dropdown-item">
+
+            <div class="dropdown-icon">
+                📈
+            </div>
+
+            <div class="dropdown-text">
+                <strong>Planiranje – SO99+</strong>
+                <span>
+                    Prognoziranje potražnje i optimizacija zaliha
+                </span>
+            </div>
+
+        </a>
+
+
+        <a href="custom.html" class="dropdown-item">
+
+            <div class="dropdown-icon">
+                🧩
+            </div>
+
+            <div class="dropdown-text">
+                <strong>Custom rešenja</strong>
+                <span>
+                    Mobilne, PC i tablet aplikacije po meri
+                </span>
+            </div>
+
+        </a>
+
+
+        <a href="#" class="dropdown-item">
+
+            <div class="dropdown-icon">
+                ⚙️
+            </div>
+
+            <div class="dropdown-text">
+                <strong>Automatizacija</strong>
+                <span>
+                    Automatizacija skladišnih i logističkih procesa
+                </span>
+            </div>
+
+        </a>
+
+
+        <a href="#software" class="dropdown-item">
+
+            <div class="dropdown-icon">
+                💻
+            </div>
+
+            <div class="dropdown-text">
+                <strong>Sva softverska rešenja</strong>
+                <span>
+                    Pregled kompletnog portfolija
+                </span>
+            </div>
+
+        </a>
+
+    </div>
+
+</li>
             <li>
                 <a href="#hardware">Hardverska rešenja</a>
             </li>
