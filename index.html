@@ -2140,80 +2140,109 @@ Veridix je višegodišnji partner vodećih proizvođača softverskih platformi i
 
 
 
-            <div class="contact-form">
-
-                <h3>
-                    Pošaljite nam upit
-                </h3>
-
-                <form>
-
-                    <div class="form-group">
-
-                        <label>
-                            Ime i prezime
-                        </label>
-
-                        <input
-                            type="text"
-                            placeholder="Vaše ime i prezime"
-                        >
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label>
-                            Kompanija
-                        </label>
-
-                        <input
-                            type="text"
-                            placeholder="Naziv kompanije"
-                        >
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label>
-                            Email
-                        </label>
-
-                        <input
-                            type="email"
-                            placeholder="vas@email.com"
-                        >
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label>
-                            Poruka
-                        </label>
-
-                        <textarea
-                            placeholder="Opišite ukratko šta vam je potrebno..."
-                        ></textarea>
-
-                    </div>
-
-
-                    <button
-                        type="submit"
-                        class="btn btn-primary form-button"
+<!--kontakt forma>
+        <div class="contact-form">
+        
+            <h3>
+                Pošaljite nam upit
+            </h3>
+        
+            <form
+                action="https://api.web3forms.com/submit"
+                method="POST"
+            >
+        
+                <!-- Web3Forms -->
+                <input
+                    type="hidden"
+                    name="access_key"
+                    value="27c012ab-0d1d-476a-9fe5-9c82bd09f000"
+                >
+        
+                <!-- Naslov emaila koji ćeš dobiti -->
+                <input
+                    type="hidden"
+                    name="subject"
+                    value="Novi upit sa sajta"
+                >
+        
+                <!-- Ime -->
+                <div class="form-group">
+        
+                    <label>
+                        Ime i prezime
+                    </label>
+        
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="Vaše ime i prezime"
+                        required
                     >
-                        Pošalji upit →
-                    </button>
-
-                </form>
-
-            </div>
-
+        
+                </div>
+        
+        
+                <!-- Kompanija -->
+                <div class="form-group">
+        
+                    <label>
+                        Kompanija
+                    </label>
+        
+                    <input
+                        type="text"
+                        name="company"
+                        placeholder="Naziv kompanije"
+                    >
+        
+                </div>
+        
+        
+                <!-- Email -->
+                <div class="form-group">
+        
+                    <label>
+                        Email
+                    </label>
+        
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="vas@email.com"
+                        required
+                    >
+        
+                </div>
+        
+        
+                <!-- Poruka -->
+                <div class="form-group">
+        
+                    <label>
+                        Poruka
+                    </label>
+        
+                    <textarea
+                        name="message"
+                        placeholder="Opišite ukratko šta vam je potrebno..."
+                        required
+                    ></textarea>
+        
+                </div>
+        
+        
+                <!-- Dugme -->
+                <button
+                    type="submit"
+                    class="btn btn-primary form-button"
+                >
+                    Pošalji upit →
+                </button>
+        
+            </form>
+        
+        </div>
 
         </div>
 
