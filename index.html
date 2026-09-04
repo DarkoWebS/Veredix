@@ -482,7 +482,50 @@
         padding: 12px;
         text-align: left;
     }
+/* Za hamburger */
+   .navbar {
+        height: 76px;
+        padding: 0;
+        flex-direction: row;
+        justify-content: space-between;
+        position: relative;
+    }
 
+    .menu-toggle {
+        display: flex;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        position: absolute;
+        top: 76px;
+        left: 0;
+        width: 100%;
+        background: white;
+        border-top: 1px solid #e8ebf0;
+        box-shadow: 0 15px 25px rgba(30,60,90,0.08);
+        padding: 15px 20px 25px;
+    }
+
+    .nav-links.open {
+        display: flex;
+    }
+
+    .nav-links li {
+        width: 100%;
+        padding: 10px 0;
+        border-bottom: 1px solid #f0f2f5;
+    }
+
+    .nav-contact {
+        display: inline-block;
+        margin-top: 10px;
+    }
+
+    
 }
         
         /* =====================================================
@@ -2504,6 +2547,25 @@ Veridix je višegodišnji partner vodećih proizvođača softverskih platformi i
 
 document.addEventListener("DOMContentLoaded", function () {
 
+const menuToggle = document.querySelector(".menu-toggle");
+const navLinks = document.querySelector(".nav-links");
+
+menuToggle.addEventListener("click", function () {
+    menuToggle.classList.toggle("active");
+    navLinks.classList.toggle("open");
+});
+
+// zatvori meni kad korisnik klikne na link
+navLinks.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", function () {
+        // ne zatvaraj ako je klik na dropdown strelicu na mobilnom
+        if (!link.closest(".nav-dropdown") || window.innerWidth > 700) {
+            menuToggle.classList.remove("active");
+            navLinks.classList.remove("open");
+        }
+    });
+});
+    
 const dropdown = document.querySelector(".nav-dropdown");
 const dropdownLink = dropdown.querySelector(":scope > a");
 
