@@ -349,17 +349,17 @@ left: 100%;
 transform: translateX(-50%) translateY(10px);
 
 width: 650px;
-padding: 25px;
+padding: 0;
 
 background: #eaf3fd;
 border: 1px solid #d6e6f8;
-border-radius: 12px;
+border-radius: 0;
 
 box-shadow: 0 20px 45px rgba(16,42,67,0.14);
 
 display: grid;
 grid-template-columns: 1fr;
-gap: 10px;
+gap: 0;
 
 text-align: center;
 
@@ -389,14 +389,19 @@ gap: 10px;
 
 padding: 18px;
 
-border-radius: 9px;
-background: #ffffff;
+border-radius: 0;
+background: #eaf3fd;
 
 transition: 0.2s;
 }
 
 .dropdown-item:hover {
-background: #dceafb;
+background: #6A87D9;
+}
+
+.dropdown-item:hover .dropdown-text strong,
+.dropdown-item:hover .dropdown-text span {
+color: #ffffff;
 }
 
 /* Ikonica */
@@ -411,9 +416,9 @@ display: flex;
 align-items: center;
 justify-content: center;
 
-border-radius: 8px;
+border-radius: 0;
 
-background: #d6e9fd;
+background: #eaf3fd;
 
 font-size: 20px;
 }
@@ -429,6 +434,7 @@ display: block;
 color: #102a43;
 font-size: 15px;
 margin-bottom: 3px;
+transition: 0.2s;
 }
 
 .dropdown-text span {
@@ -436,6 +442,7 @@ display: block;
 color: #667085;
 font-size: 12px;
 line-height: 1.4;
+transition: 0.2s;
 }
 
 
@@ -470,11 +477,11 @@ line-height: 1.4;
 
     background: #eaf3fd;
     border: 1px solid #d6e6f8;
-    border-radius: 12px;
+    border-radius: 0;
 
     box-shadow: 0 15px 35px rgba(30,60,90,0.15);
 
-    padding: 10px;
+    padding: 0;
 
     text-align: center;
 
@@ -491,6 +498,8 @@ line-height: 1.4;
 .dropdown-item {
     padding: 14px;
     text-align: center;
+    border-radius: 0;
+    background: #eaf3fd;
 }
 
 /* Za hamburger */
@@ -1161,7 +1170,6 @@ footer {
         gap: 30px;
     }
 }
-
     </style>
 </head>
 
