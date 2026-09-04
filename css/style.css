@@ -207,7 +207,7 @@ header {
 ===================================================== */
 
 .hero {
-    min-height: 650px;
+    min-height: 500px;
 
     display: flex;
     align-items: center;
@@ -1407,7 +1407,7 @@ footer {
     ----------------------------------------------- */
 
     .hero {
-        min-height: 550px;
+        min-height: 500px;
 
         padding: 70px 0;
     }
