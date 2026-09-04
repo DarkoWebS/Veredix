@@ -42,7 +42,23 @@ a {
     max-width: 1200px;
     margin: auto;
 }
-
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+ 
+    background-image: url("https://veridix.info/img/vdx_logo.png");
+    background-repeat: repeat;
+    background-size: 140px;
+ 
+    opacity: 0.04;
+ 
+    pointer-events: none;
+    z-index: 0;
+}
 
 /* =====================================================
    NAVIGACIJA
