@@ -108,6 +108,39 @@
         .nav-contact:hover {
             background: #125ca8;
         }
+        /* = NAVIGACIJA za hamburger = */
+        .menu-toggle {
+        display: none;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 26px;
+        height: 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        z-index: 1100;
+    }
+    
+    .menu-toggle span {
+        display: block;
+        height: 3px;
+        width: 100%;
+        background: #102a43;
+        border-radius: 2px;
+        transition: 0.3s;
+    }
+    
+    /* X animacija kad je meni otvoren */
+    .menu-toggle.active span:nth-child(1) {
+        transform: translateY(8.5px) rotate(45deg);
+    }
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .menu-toggle.active span:nth-child(3) {
+        transform: translateY(-8.5px) rotate(-45deg);
+    }
         
         .map-container {
             width: 100%;
