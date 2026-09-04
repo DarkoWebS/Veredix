@@ -342,7 +342,7 @@
 
 /* Padajući meni */
 
-/*.dropdown-menu {
+.dropdown-menu {
     position: absolute;
     top: calc(100% + 0px);
     left: 100%;
@@ -358,7 +358,7 @@
     box-shadow: 0 20px 45px rgba(16,42,67,0.14);
 
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 8px;
 
     opacity: 0;
@@ -366,20 +366,12 @@
     pointer-events: none;
 
     transition: 0.25s ease;
-}*/
-.dropdown-menu {
-    left: 0;
-    width: max-content;
-
-    display: flex;
-    flex-direction: row;
-    gap: 8px;
 }
-
 /* Otvaranje na hover */
 
 .nav-dropdown:hover .dropdown-menu {
     opacity: 1;
+    background: rgba(255, 255, 255, 1); 
     visibility: visible;
     pointer-events: auto;
     transform: translateX(-50%) translateY(0);
@@ -446,7 +438,7 @@
 
     .nav-dropdown {
         width: 100%;
-        text-align: center;
+        text-align: left;
     }
 
     .nav-dropdown > a {
@@ -490,13 +482,14 @@
         padding: 12px;
         text-align: left;
     }
+    
 /* Za hamburger */
   .navbar {
         height: 76px;
         padding: 0;
         flex-direction: row;
         justify-content: space-between;
-        align-items: center;
+        align-items: left;
         position: relative;
     }
 
