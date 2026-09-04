@@ -207,7 +207,7 @@ header {
 ===================================================== */
 
 .hero {
-    min-height: 250px;
+    min-height: 100px;
 
     display: flex;
     align-items: center;
@@ -621,7 +621,7 @@ section {
 }
 
 .about-box {
-    min-height: 260px;
+    min-height: 100px;
 
     border-radius: 15px;
 
@@ -1407,7 +1407,7 @@ footer {
     ----------------------------------------------- */
 
     .hero {
-        min-height: 400px;
+        min-height: 100px;
 
         padding: 70px 0;
     }
