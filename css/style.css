@@ -857,9 +857,9 @@ section {
 ===================================================== */
 
 .challenge-solution {
-    width: min(1120px, calc(100% - 40px));
+    width: 90%;
     max-width: 1120px;
-    margin: 70px auto 0;
+    margin: 0 auto;
 }
 
 
@@ -1024,10 +1024,10 @@ section {
 
 @media (max-width: 800px) {
 
-    .challenge-solution {
-        width: calc(100% - 30px);
-        margin-top: 50px;
-    }
+   .challenge-solution {
+       width: calc(100% - 30px);
+       margin: 0 auto;
+   }
 
     .challenge-solution-header {
         margin-bottom: 25px;
