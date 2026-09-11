@@ -855,10 +855,19 @@ section {
 /* =====================================================
    IZAZOVI I REŠENJA
 ===================================================== */
+.challenge-solution-header {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 50px;
+    align-items: end;
+    margin-bottom: 35px;
+}
 
 .challenge-solution {
-    margin-top: 70px;
+    width: min(1120px, calc(100% - 40px));
+    margin: 45px auto 0;
 }
+
 
 
 /* Header */
