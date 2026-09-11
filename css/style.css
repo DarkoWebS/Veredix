@@ -1044,6 +1044,23 @@ section {
 
 }
 
+/* =====================================================
+   UŽA ŠIRINA ZA IZAZOVE I REŠENJA
+===================================================== */
+
+.challenge-solution {
+    max-width: 1120px;
+    margin: 70px auto 0;
+}
+
+.challenge-solution-header {
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 50px;
+}
+
+.challenge-table {
+    width: 100%;
+}
 
 /* =====================================================
    SMALL MOBILE
