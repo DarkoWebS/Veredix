@@ -853,35 +853,19 @@ section {
     font-size: 14px;
 }
 /* =====================================================
-   IZAZOVI I REŠENJA
+   HEADER
 ===================================================== */
-.challenge-solution-header {
-    display: grid;
-    grid-template-columns: 0.9fr 1.1fr;
-    gap: 50px;
-    align-items: end;
-    margin-bottom: 35px;
-}
-
-.challenge-solution {
-    width: min(1120px, calc(100% - 40px));
-    margin: 45px auto 0;
-}
-
-
-
-/* Header */
 
 .challenge-solution-header {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: end;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
     margin-bottom: 35px;
 }
 
 .challenge-solution-header h3 {
-    margin: 10px 0 0;
+    margin: 10px 0 12px;
     font-size: 32px;
     line-height: 1.2;
     font-weight: 700;
@@ -889,123 +873,12 @@ section {
 }
 
 .challenge-solution-header p {
-    margin: 0;
-    max-width: 520px;
+    margin: 0 auto;
+    max-width: 700px;
     color: #6b7280;
     font-size: 16px;
     line-height: 1.7;
 }
-
-
-/* Tabela */
-
-.challenge-table {
-    width: 100%;
-    border: 1px solid #e5e7eb;
-    border-radius: 16px;
-    overflow: hidden;
-    background: #ffffff;
-}
-
-
-/* Red */
-
-.challenge-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
-
-
-/* Zaglavlje */
-
-.challenge-heading {
-    background: #f8fafc;
-    border-bottom: 1px solid #e5e7eb;
-}
-
-.challenge-heading > div {
-    padding: 18px 28px;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    color: #1976d2;
-}
-
-.challenge-heading > div + div {
-    border-left: 1px solid #e5e7eb;
-}
-
-
-/* Ćelije */
-
-.challenge,
-.solution {
-    padding: 25px 28px;
-    min-height: 115px;
-}
-
-.challenge {
-    background: #ffffff;
-}
-
-.solution {
-    background: #f8fbff;
-    border-left: 1px solid #e5e7eb;
-}
-
-
-/* Naslovi */
-
-.challenge strong,
-.solution strong {
-    display: block;
-    margin-bottom: 8px;
-    font-size: 17px;
-    line-height: 1.35;
-    font-weight: 700;
-}
-
-.challenge strong {
-    color: #1f2937;
-}
-
-.solution strong {
-    color: #1976d2;
-}
-
-
-/* Opis */
-
-.challenge span,
-.solution span {
-    display: block;
-    font-size: 14px;
-    line-height: 1.65;
-    color: #6b7280;
-}
-
-
-/* Razdelnik između redova */
-
-.challenge-row:not(.challenge-heading) {
-    border-bottom: 1px solid #e5e7eb;
-}
-
-.challenge-row:last-child {
-    border-bottom: none;
-}
-
-
-/* Hover efekat */
-
-.challenge-row:not(.challenge-heading):hover .solution {
-    background: #f1f7ff;
-}
-
-.challenge-row:not(.challenge-heading):hover .challenge strong {
-    color: #1976d2;
-}
-
 
 /* =====================================================
    RESPONSIVE
